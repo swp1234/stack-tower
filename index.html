@@ -44,6 +44,17 @@
     <title>Stack Tower - 타이밍 아케이드 게임</title>
 </head>
 <body>
+    <!-- Language Selector -->
+    <div class="language-selector">
+        <button class="lang-btn" id="langBtn" title="Language">🌐</button>
+        <div class="lang-menu hidden" id="langMenu">
+            <button class="lang-option active" data-lang="ko">한국어</button>
+            <button class="lang-option" data-lang="en">English</button>
+            <button class="lang-option" data-lang="zh">简体中文</button>
+            <button class="lang-option" data-lang="hi">हिन्दी</button>
+            <button class="lang-option" data-lang="ru">Русский</button>
+        </div>
+    </div>
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-J8GSWM40TV"></script>
     <script>
@@ -57,31 +68,31 @@
         <!-- Main Screen -->
         <div id="mainScreen" class="screen active">
             <div class="main-container">
-                <h1 class="title">스택 타워</h1>
-                <p class="subtitle">정확한 타이밍으로 탑을 쌓아보세요!</p>
+                <h1 class="title" data-i18n="menu.title">스택 타워</h1>
+                <p class="subtitle" data-i18n="menu.subtitle">정확한 타이밍으로 탑을 쌓아보세요!</p>
 
                 <div class="stats-card">
                     <div class="stat-item">
-                        <div class="stat-label">최고 층수</div>
+                        <div class="stat-label" data-i18n="menu.maxFloor">최고 층수</div>
                         <div class="stat-value" id="maxFloor">0</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-label">최고 점수</div>
+                        <div class="stat-label" data-i18n="menu.maxScore">최고 점수</div>
                         <div class="stat-value" id="maxScore">0</div>
                     </div>
                 </div>
 
                 <div class="badges-container">
                     <div class="current-badge">
-                        <div class="badge-label">현재 칭호</div>
+                        <div class="badge-label" data-i18n="menu.currentBadge">현재 칭호</div>
                         <div class="badge-name" id="currentBadge">쌓기 입문자</div>
                     </div>
                 </div>
 
                 <div class="button-group">
-                    <button id="startBtn" class="btn btn-primary">게임 시작</button>
-                    <button id="skinsBtn" class="btn btn-secondary">스킨</button>
-                    <button id="leaderboardBtn" class="btn btn-secondary">통계</button>
+                    <button id="startBtn" class="btn btn-primary" data-i18n="menu.startGame">게임 시작</button>
+                    <button id="skinsBtn" class="btn btn-secondary" data-i18n="menu.skins">스킨</button>
+                    <button id="leaderboardBtn" class="btn btn-secondary" data-i18n="menu.stats">통계</button>
                 </div>
             </div>
         </div>
@@ -91,11 +102,11 @@
             <div class="game-header">
                 <div class="game-info">
                     <div class="info-item">
-                        <span class="info-label">층수</span>
+                        <span class="info-label" data-i18n="game.floor">층수</span>
                         <span class="info-value" id="floorDisplay">1</span>
                     </div>
                     <div class="info-item">
-                        <span class="info-label">점수</span>
+                        <span class="info-label" data-i18n="game.score">점수</span>
                         <span class="info-value" id="scoreDisplay">0</span>
                     </div>
                 </div>
@@ -107,22 +118,22 @@
             </div>
 
             <canvas id="gameCanvas" class="game-canvas"></canvas>
-            <div id="tap-hint" class="tap-hint" style="display:none;">👆 탭하여 시작</div>
+            <div id="tap-hint" class="tap-hint" style="display:none;" data-i18n="game.tapToStart">👆 탭하여 시작</div>
             <div id="hud-combo" class="hud-combo hidden"></div>
 
             <!-- Power Up Buttons -->
             <div class="powerup-container">
                 <button class="powerup-btn" id="reviveBtn" title="부활 (게임 오버 시)">
                     <span class="powerup-icon">💫</span>
-                    <span class="powerup-label">부활</span>
+                    <span class="powerup-label" data-i18n="game.revive">부활</span>
                 </button>
                 <button class="powerup-btn" id="slowBtn" title="슬로우 모션">
                     <span class="powerup-icon">⏱️</span>
-                    <span class="powerup-label">슬로우</span>
+                    <span class="powerup-label" data-i18n="game.slowMotion">슬로우</span>
                 </button>
                 <button class="powerup-btn" id="hintBtn" title="힌트">
                     <span class="powerup-icon">💡</span>
-                    <span class="powerup-label">힌트</span>
+                    <span class="powerup-label" data-i18n="game.hint">힌트</span>
                 </button>
             </div>
 
@@ -135,19 +146,19 @@
         <!-- Game Over Screen -->
         <div id="gameOverScreen" class="screen">
             <div class="game-over-container">
-                <h2 class="game-over-title">게임 오버!</h2>
+                <h2 class="game-over-title" data-i18n="game.gameOver">게임 오버!</h2>
 
                 <div class="result-stats">
                     <div class="result-item">
-                        <span class="result-label">최종 층수</span>
+                        <span class="result-label" data-i18n="game.finalFloor">최종 층수</span>
                         <span class="result-value" id="finalFloor">0</span>
                     </div>
                     <div class="result-item">
-                        <span class="result-label">획득 점수</span>
+                        <span class="result-label" data-i18n="game.acquiredScore">획득 점수</span>
                         <span class="result-value" id="finalScore">0</span>
                     </div>
                     <div class="result-item">
-                        <span class="result-label">완벽 타이밍</span>
+                        <span class="result-label" data-i18n="game.perfectTiming">완벽 타이밍</span>
                         <span class="result-value" id="perfectCount">0</span>
                     </div>
                 </div>
@@ -159,15 +170,15 @@
                 </div>
 
                 <div class="result-buttons">
-                    <button id="reviveGameBtn" class="btn btn-primary">부활하기</button>
-                    <button id="restartBtn" class="btn btn-secondary">다시 시작</button>
-                    <button id="shareBtn" class="btn btn-tertiary">공유하기</button>
+                    <button id="reviveGameBtn" class="btn btn-primary" data-i18n="game.reviveGame">부활하기</button>
+                    <button id="restartBtn" class="btn btn-secondary" data-i18n="game.restart">다시 시작</button>
+                    <button id="shareBtn" class="btn btn-tertiary" data-i18n="game.share">공유하기</button>
                 </div>
 
-                <button id="mainMenuBtn" class="btn btn-text">메인 메뉴</button>
+                <button id="mainMenuBtn" class="btn btn-text" data-i18n="game.mainMenu">메인 메뉴</button>
 
                 <div class="recommendations-section">
-                    <div class="rec-title">이것도 해보세요</div>
+                    <div class="rec-title" data-i18n="game.recommendations">이것도 해보세요</div>
                     <div class="rec-grid">
                         <a href="https://dopabrain.com/sky-runner/" class="rec-card" target="_blank">
                             <span class="rec-icon">🚀</span>
@@ -198,24 +209,24 @@
         <!-- Skin Selection Screen -->
         <div id="skinScreen" class="screen">
             <div class="skin-container">
-                <h2 class="skin-title">블록 테마 선택</h2>
+                <h2 class="skin-title" data-i18n="skins.title">블록 테마 선택</h2>
 
                 <div class="skin-grid" id="skinGrid">
                     <!-- Skins will be generated by JavaScript -->
                 </div>
 
-                <button id="skinBackBtn" class="btn btn-secondary">뒤로</button>
+                <button id="skinBackBtn" class="btn btn-secondary" data-i18n="skins.back">뒤로</button>
             </div>
         </div>
 
         <!-- Leaderboard Screen -->
         <div id="leaderboardScreen" class="screen">
             <div class="leaderboard-container">
-                <h2 class="leaderboard-title">통계</h2>
+                <h2 class="leaderboard-title" data-i18n="leaderboard.title">통계</h2>
 
                 <div class="leaderboard-tabs">
-                    <button class="tab-btn active" data-tab="badges">칭호</button>
-                    <button class="tab-btn" data-tab="stats">통계</button>
+                    <button class="tab-btn active" data-tab="badges" data-i18n="leaderboard.badges">칭호</button>
+                    <button class="tab-btn" data-tab="stats" data-i18n="leaderboard.stats">통계</button>
                 </div>
 
                 <div id="badgesContent" class="tab-content active">
@@ -227,30 +238,66 @@
                 <div id="statsContent" class="tab-content">
                     <div class="stats-grid">
                         <div class="stat-card">
-                            <div class="stat-label">총 플레이</div>
+                            <div class="stat-label" data-i18n="leaderboard.totalGames">총 플레이</div>
                             <div class="stat-big-value" id="totalGames">0</div>
                         </div>
                         <div class="stat-card">
-                            <div class="stat-label">총 층수</div>
+                            <div class="stat-label" data-i18n="leaderboard.totalFloors">총 층수</div>
                             <div class="stat-big-value" id="totalFloors">0</div>
                         </div>
                         <div class="stat-card">
-                            <div class="stat-label">평균 층수</div>
+                            <div class="stat-label" data-i18n="leaderboard.avgFloor">평균 층수</div>
                             <div class="stat-big-value" id="avgFloor">0</div>
                         </div>
                         <div class="stat-card">
-                            <div class="stat-label">완벽 횟수</div>
+                            <div class="stat-label" data-i18n="leaderboard.perfectTotal">완벽 횟수</div>
                             <div class="stat-big-value" id="perfectTotal">0</div>
                         </div>
                     </div>
                 </div>
 
-                <button id="leaderboardBackBtn" class="btn btn-secondary">뒤로</button>
+                <button id="leaderboardBackBtn" class="btn btn-secondary" data-i18n="skins.back">뒤로</button>
             </div>
         </div>
     </div>
 
+    <script src="js/i18n.js"></script>
     <script src="js/game-data.js"></script>
     <script src="js/app.js"></script>
+    <script>
+        // Initialize i18n and load translations
+        async function initI18n() {
+            await i18n.loadTranslations(i18n.currentLang);
+            i18n.updateUI();
+
+            // Language selector event listeners
+            const langBtn = document.getElementById('langBtn');
+            const langMenu = document.getElementById('langMenu');
+            const langOptions = document.querySelectorAll('.lang-option');
+
+            langBtn.addEventListener('click', () => {
+                langMenu.classList.toggle('hidden');
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.language-selector')) {
+                    langMenu.classList.add('hidden');
+                }
+            });
+
+            langOptions.forEach(option => {
+                option.addEventListener('click', async () => {
+                    const lang = option.getAttribute('data-lang');
+                    await i18n.setLanguage(lang);
+
+                    langOptions.forEach(o => o.classList.remove('active'));
+                    option.classList.add('active');
+                    langMenu.classList.add('hidden');
+                });
+            });
+        }
+
+        initI18n();
+    </script>
 </body>
 </html>

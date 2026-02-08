@@ -36,6 +36,7 @@ class StackTowerGame {
 
     // Visual effects
     this.particles = [];
+    this.bgParticles = [];
     this.feedbackText = null;
     this.shakeAmount = 0;
     this.flashAlpha = 0;
@@ -174,6 +175,7 @@ class StackTowerGame {
     this.fallingPiece = null;
     this.particles = [];
     this.feedbackText = null;
+    this.initBgParticles();
     this.cameraY = 0;
     this.targetCameraY = 0;
     this.reviveUsed = false;
@@ -281,10 +283,11 @@ class StackTowerGame {
       this.bestStreak = Math.max(this.bestStreak, this.perfectStreak);
       this.score += 50 + this.combo * 10;
 
-      this.spawnParticles(curr.x + curr.w / 2, curr.y + curr.h / 2, '#2ecc71', 20);
+      this.spawnParticles(curr.x + curr.w / 2, curr.y + curr.h / 2, '#2ecc71', 30);
       this.showFeedback('PERFECT!', '#2ecc71');
-      this.shakeAmount = 6;
-      this.flashAlpha = 0.15;
+      this.shakeAmount = 8;
+      this.flashAlpha = 0.25;
+      curr.whiteBorderFlash = 0.4;
 
       // Grow block slightly on consecutive perfects
       if (this.combo >= 3) {
@@ -434,6 +437,38 @@ class StackTowerGame {
     });
   }
 
+  // === BACKGROUND PARTICLES ===
+  initBgParticles() {
+    this.bgParticles = [];
+    for (let i = 0; i < 40; i++) {
+      this.bgParticles.push({
+        x: Math.random() * this.W,
+        y: Math.random() * this.H,
+        vx: 0,
+        vy: -0.3 - Math.random() * 0.2,
+        alpha: Math.random() * 0.6 + 0.2,
+        size: Math.random() * 1.5 + 0.5
+      });
+    }
+  }
+
+  updateBgParticles(dt) {
+    for (const p of this.bgParticles) {
+      p.y += p.vy * dt;
+      if (p.y < -10) {
+        p.y = this.H + 10;
+        p.x = Math.random() * this.W;
+      }
+    }
+  }
+
+  renderBgParticles(ctx) {
+    for (const p of this.bgParticles) {
+      ctx.fillStyle = `rgba(255,255,255,${p.alpha * 0.5})`;
+      ctx.fillRect(p.x, p.y, p.size, p.size);
+    }
+  }
+
   // === RENDER LOOP ===
   loop(timestamp) {
     const dt = this.lastTime ? Math.min((timestamp - this.lastTime) / 16.67, 2) : 1;
@@ -448,6 +483,7 @@ class StackTowerGame {
     if (this.state === 'menu' || this.state === 'gameover') {
       // Only update particles
       this.updateParticles(dt);
+      this.updateBgParticles(dt);
       return;
     }
 
@@ -523,6 +559,7 @@ class StackTowerGame {
     }
 
     this.updateParticles(dt);
+    this.updateBgParticles(dt);
   }
 
   updateParticles(dt) {
@@ -574,6 +611,9 @@ class StackTowerGame {
 
     // Grid lines
     this.renderGrid(ctx, theme);
+
+    // Floating ambient particles
+    this.renderBgParticles(ctx);
 
     // Apply camera shake
     if (this.shakeAmount > 0) {
@@ -655,10 +695,23 @@ class StackTowerGame {
 
     // Combo counter
     if (this.combo >= 2 && (this.state === 'playing' || this.state === 'falling')) {
+      const baseFontSize = 16;
+      const fontSize = Math.min(baseFontSize + Math.floor(this.combo / 5) * 2, 28);
+      const pulseScale = 1 + Math.sin(Date.now() * 0.005) * 0.08;
+
+      ctx.save();
+      ctx.translate(W / 2, 40);
+      ctx.scale(pulseScale, pulseScale);
+
+      ctx.shadowColor = 'rgba(255, 215, 0, 0.6)';
+      ctx.shadowBlur = 20;
       ctx.fillStyle = '#ffd700';
-      ctx.font = 'bold 16px -apple-system, sans-serif';
+      ctx.font = `bold ${fontSize}px -apple-system, sans-serif`;
       ctx.textAlign = 'center';
-      ctx.fillText(`${this.combo}x COMBO`, W / 2, 40);
+      ctx.textBaseline = 'middle';
+      ctx.fillText(`${this.combo}x COMBO`, 0, 0);
+
+      ctx.restore();
     }
 
     // Flash overlay
@@ -697,15 +750,22 @@ class StackTowerGame {
     // Neon glow
     if (theme.glowEffect) {
       ctx.shadowColor = color;
-      ctx.shadowBlur = 12;
+      ctx.shadowBlur = 18;
     }
 
     ctx.fillRect(x, y, w, h);
     ctx.shadowBlur = 0;
 
-    // Top highlight
-    ctx.fillStyle = 'rgba(255,255,255,0.2)';
-    ctx.fillRect(x, y, w, 3);
+    // Inner glow overlay (semi-transparent white at top)
+    const innerGlow = ctx.createLinearGradient(x, y, x, y + h * 0.3);
+    innerGlow.addColorStop(0, 'rgba(255,255,255,0.25)');
+    innerGlow.addColorStop(1, 'rgba(255,255,255,0)');
+    ctx.fillStyle = innerGlow;
+    ctx.fillRect(x, y, w, h * 0.3);
+
+    // Top highlight (thicker and brighter)
+    ctx.fillStyle = 'rgba(255,255,255,0.3)';
+    ctx.fillRect(x, y, w, 5);
 
     // Left highlight
     ctx.fillStyle = 'rgba(255,255,255,0.1)';
@@ -718,14 +778,25 @@ class StackTowerGame {
     // Side shading (3D effect)
     ctx.fillStyle = 'rgba(0,0,0,0.1)';
     ctx.fillRect(x + w - 2, y, 2, h);
+
+    // White border flash on perfect
+    if (block.whiteBorderFlash && block.whiteBorderFlash > 0) {
+      const alpha = block.whiteBorderFlash;
+      ctx.strokeStyle = `rgba(255,255,255,${alpha * 0.6})`;
+      ctx.lineWidth = 3;
+      ctx.strokeRect(x, y, w, h);
+      block.whiteBorderFlash *= 0.85;
+      if (block.whiteBorderFlash < 0.01) block.whiteBorderFlash = 0;
+    }
   }
 
   renderStars(ctx) {
-    ctx.fillStyle = 'rgba(255,255,255,0.5)';
     for (let i = 0; i < 60; i++) {
       const sx = (i * 97 + 13) % this.W;
       const sy = ((i * 137 + 29 + this.cameraY * 0.2) % this.H);
-      const size = (i % 3 === 0) ? 2 : 1;
+      const size = 1 + (i % 3);
+      const twinkle = 0.3 + Math.sin(Date.now() * 0.002 + i) * 0.2;
+      ctx.fillStyle = `rgba(255,255,255,${0.5 + twinkle})`;
       ctx.fillRect(sx, sy, size, size);
     }
   }
@@ -826,6 +897,7 @@ class StackTowerGame {
       e.stopPropagation();
       this.activateHint();
     });
+
   }
 
   updateScreen() {

@@ -1,0 +1,46 @@
+{
+  "app": {
+    "title": "Stack Tower - 计时街机游戏",
+    "description": "在完美的时机下落积木建造塔楼的街机游戏。"
+  },
+  "menu": {
+    "title": "堆栈塔楼",
+    "subtitle": "用完美的时机建造您的塔楼！",
+    "maxFloor": "最佳楼层",
+    "maxScore": "最高分数",
+    "currentBadge": "当前徽章",
+    "startGame": "开始游戏",
+    "skins": "皮肤",
+    "stats": "统计"
+  },
+  "game": {
+    "floor": "楼层",
+    "score": "分数",
+    "gameOver": "游戏结束！",
+    "finalFloor": "最终楼层",
+    "acquiredScore": "获得分数",
+    "perfectTiming": "完美计时",
+    "revive": "复活",
+    "slowMotion": "慢动作",
+    "hint": "提示",
+    "reviveGame": "复活游戏",
+    "restart": "重新开始",
+    "share": "分享",
+    "mainMenu": "主菜单",
+    "recommendations": "也试试这些",
+    "tapToStart": "👆 点击开始"
+  },
+  "skins": {
+    "title": "积木主题",
+    "back": "返回"
+  },
+  "leaderboard": {
+    "title": "统计",
+    "badges": "徽章",
+    "stats": "统计",
+    "totalGames": "总游戏次数",
+    "totalFloors": "总楼层数",
+    "avgFloor": "平均楼层",
+    "perfectTotal": "完美次数"
+  }
+}

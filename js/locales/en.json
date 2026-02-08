@@ -1,0 +1,46 @@
+{
+  "app": {
+    "title": "Stack Tower - Timing Arcade Game",
+    "description": "Drop blocks at the perfect timing to build a tower in this arcade game!"
+  },
+  "menu": {
+    "title": "Stack Tower",
+    "subtitle": "Build your tower with perfect timing!",
+    "maxFloor": "Best Floor",
+    "maxScore": "Best Score",
+    "currentBadge": "Current Badge",
+    "startGame": "Start Game",
+    "skins": "Skins",
+    "stats": "Statistics"
+  },
+  "game": {
+    "floor": "Floor",
+    "score": "Score",
+    "gameOver": "Game Over!",
+    "finalFloor": "Final Floor",
+    "acquiredScore": "Score Earned",
+    "perfectTiming": "Perfect Timing",
+    "revive": "Revive",
+    "slowMotion": "Slow",
+    "hint": "Hint",
+    "reviveGame": "Revive Game",
+    "restart": "Restart",
+    "share": "Share",
+    "mainMenu": "Main Menu",
+    "recommendations": "Try These Too",
+    "tapToStart": "👆 Tap to Start"
+  },
+  "skins": {
+    "title": "Block Theme",
+    "back": "Back"
+  },
+  "leaderboard": {
+    "title": "Statistics",
+    "badges": "Badges",
+    "stats": "Stats",
+    "totalGames": "Total Games",
+    "totalFloors": "Total Floors",
+    "avgFloor": "Avg Floor",
+    "perfectTotal": "Perfect Count"
+  }
+}
