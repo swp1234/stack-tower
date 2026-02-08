@@ -1,0 +1,46 @@
+{
+  "app": {
+    "title": "スタックタワー - タイミングアーケードゲーム",
+    "description": "完璧なタイミングでブロックを落とし、塔を建てるアーケードゲーム！"
+  },
+  "menu": {
+    "title": "スタックタワー",
+    "subtitle": "完璧なタイミングで塔を建てよう！",
+    "maxFloor": "ベスト階層",
+    "maxScore": "ベストスコア",
+    "currentBadge": "現在のバッジ",
+    "startGame": "ゲーム開始",
+    "skins": "スキン",
+    "stats": "統計"
+  },
+  "game": {
+    "floor": "階",
+    "score": "スコア",
+    "gameOver": "ゲームオーバー！",
+    "finalFloor": "最終階層",
+    "acquiredScore": "獲得スコア",
+    "perfectTiming": "パーフェクトタイミング",
+    "revive": "復活",
+    "slowMotion": "スロー",
+    "hint": "ヒント",
+    "reviveGame": "ゲームを復活",
+    "restart": "リスタート",
+    "share": "シェアする",
+    "mainMenu": "メインメニュー",
+    "recommendations": "こちらも試してみてください",
+    "tapToStart": "👆 タップで開始"
+  },
+  "skins": {
+    "title": "ブロックテーマ",
+    "back": "戻る"
+  },
+  "leaderboard": {
+    "title": "統計",
+    "badges": "バッジ",
+    "stats": "統計",
+    "totalGames": "総ゲーム数",
+    "totalFloors": "総階層",
+    "avgFloor": "平均階層",
+    "perfectTotal": "パーフェクト数"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "app": {
+    "title": "Stack Tower - Juego de Arcade de Sincronización",
+    "description": "¡Cae bloques en el momento perfecto para construir una torre en este juego de arcade!"
+  },
+  "menu": {
+    "title": "Stack Tower",
+    "subtitle": "¡Construye tu torre con sincronización perfecta!",
+    "maxFloor": "Mejor Piso",
+    "maxScore": "Mejor Puntuación",
+    "currentBadge": "Insignia Actual",
+    "startGame": "Iniciar Juego",
+    "skins": "Apariencias",
+    "stats": "Estadísticas"
+  },
+  "game": {
+    "floor": "Piso",
+    "score": "Puntuación",
+    "gameOver": "¡Fin del Juego!",
+    "finalFloor": "Piso Final",
+    "acquiredScore": "Puntuación Obtenida",
+    "perfectTiming": "Sincronización Perfecta",
+    "revive": "Revivir",
+    "slowMotion": "Lento",
+    "hint": "Pista",
+    "reviveGame": "Revivir Juego",
+    "restart": "Reiniciar",
+    "share": "Compartir",
+    "mainMenu": "Menú Principal",
+    "recommendations": "Prueba Estos También",
+    "tapToStart": "👆 Toca para Comenzar"
+  },
+  "skins": {
+    "title": "Tema de Bloque",
+    "back": "Atrás"
+  },
+  "leaderboard": {
+    "title": "Estadísticas",
+    "badges": "Insignias",
+    "stats": "Estadísticas",
+    "totalGames": "Total de Juegos",
+    "totalFloors": "Total de Pisos",
+    "avgFloor": "Piso Promedio",
+    "perfectTotal": "Recuento Perfecto"
+  }
+}

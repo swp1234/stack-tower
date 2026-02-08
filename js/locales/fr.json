@@ -1,0 +1,46 @@
+{
+  "app": {
+    "title": "Stack Tower - Jeu d'Arcade de Timing",
+    "description": "Dépose les blocs au moment parfait pour construire une tour dans ce jeu d'arcade!"
+  },
+  "menu": {
+    "title": "Stack Tower",
+    "subtitle": "Construis ta tour avec un timing parfait!",
+    "maxFloor": "Meilleur Étage",
+    "maxScore": "Meilleur Score",
+    "currentBadge": "Badge Actuel",
+    "startGame": "Commencer le Jeu",
+    "skins": "Skins",
+    "stats": "Statistiques"
+  },
+  "game": {
+    "floor": "Étage",
+    "score": "Score",
+    "gameOver": "Fin de Partie!",
+    "finalFloor": "Étage Final",
+    "acquiredScore": "Score Obtenu",
+    "perfectTiming": "Timing Parfait",
+    "revive": "Revivifier",
+    "slowMotion": "Ralenti",
+    "hint": "Indice",
+    "reviveGame": "Revivifier le Jeu",
+    "restart": "Recommencer",
+    "share": "Partager",
+    "mainMenu": "Menu Principal",
+    "recommendations": "Essaie aussi",
+    "tapToStart": "👆 Tape pour Commencer"
+  },
+  "skins": {
+    "title": "Thème de Bloc",
+    "back": "Retour"
+  },
+  "leaderboard": {
+    "title": "Statistiques",
+    "badges": "Badges",
+    "stats": "Stats",
+    "totalGames": "Jeux Totaux",
+    "totalFloors": "Étages Totaux",
+    "avgFloor": "Étage Moyen",
+    "perfectTotal": "Nombre de Parfaits"
+  }
+}

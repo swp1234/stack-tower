@@ -1,0 +1,46 @@
+{
+  "app": {
+    "title": "Stack Tower - Zamanlama Arcade Oyunu",
+    "description": "Mükemmel zamanlamada blokları düşür ve bu arcade oyununda kule inşa et!"
+  },
+  "menu": {
+    "title": "Stack Tower",
+    "subtitle": "Mükemmel zamanlamada kulenizi inşa edin!",
+    "maxFloor": "En İyi Kat",
+    "maxScore": "En İyi Puan",
+    "currentBadge": "Mevcut Rozet",
+    "startGame": "Oyunu Başlat",
+    "skins": "Kozmetik",
+    "stats": "İstatistikler"
+  },
+  "game": {
+    "floor": "Kat",
+    "score": "Puan",
+    "gameOver": "Oyun Bitti!",
+    "finalFloor": "Final Katı",
+    "acquiredScore": "Kazanılan Puan",
+    "perfectTiming": "Mükemmel Zamanlama",
+    "revive": "Dirilt",
+    "slowMotion": "Yavaş",
+    "hint": "İpucu",
+    "reviveGame": "Oyunu Dirilt",
+    "restart": "Yeniden Başlat",
+    "share": "Paylaş",
+    "mainMenu": "Ana Menü",
+    "recommendations": "Bunları da Dene",
+    "tapToStart": "👆 Başlamak için Tap Et"
+  },
+  "skins": {
+    "title": "Blok Teması",
+    "back": "Geri"
+  },
+  "leaderboard": {
+    "title": "İstatistikler",
+    "badges": "Rozetler",
+    "stats": "İstatistikler",
+    "totalGames": "Toplam Oyunlar",
+    "totalFloors": "Toplam Katlar",
+    "avgFloor": "Ort. Kat",
+    "perfectTotal": "Mükemmel Sayı"
+  }
+}

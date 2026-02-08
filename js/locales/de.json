@@ -1,0 +1,46 @@
+{
+  "app": {
+    "title": "Stack Tower - Timing Arcade Spiel",
+    "description": "Platziere Blöcke zum perfekten Timing um einen Turm in diesem Arcade-Spiel zu bauen!"
+  },
+  "menu": {
+    "title": "Stack Tower",
+    "subtitle": "Baue deinen Turm mit perfektem Timing!",
+    "maxFloor": "Beste Etage",
+    "maxScore": "Beste Punktzahl",
+    "currentBadge": "Aktuelles Abzeichen",
+    "startGame": "Spiel starten",
+    "skins": "Designs",
+    "stats": "Statistik"
+  },
+  "game": {
+    "floor": "Etage",
+    "score": "Punktzahl",
+    "gameOver": "Spiel vorbei!",
+    "finalFloor": "Letzte Etage",
+    "acquiredScore": "Verdiente Punktzahl",
+    "perfectTiming": "Perfektes Timing",
+    "revive": "Wiederbelebung",
+    "slowMotion": "Langsam",
+    "hint": "Tipp",
+    "reviveGame": "Spiel wiederbeleben",
+    "restart": "Neu starten",
+    "share": "Teilen",
+    "mainMenu": "Hauptmenü",
+    "recommendations": "Probiere auch diese",
+    "tapToStart": "👆 Tippe zum Starten"
+  },
+  "skins": {
+    "title": "Block-Design",
+    "back": "Zurück"
+  },
+  "leaderboard": {
+    "title": "Statistik",
+    "badges": "Abzeichen",
+    "stats": "Statistik",
+    "totalGames": "Gesamtspiele",
+    "totalFloors": "Gesamtetagen",
+    "avgFloor": "Durchschn. Etage",
+    "perfectTotal": "Perfekte Anzahl"
+  }
+}

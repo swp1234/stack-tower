@@ -44,15 +44,25 @@
     <title>Stack Tower - 타이밍 아케이드 게임</title>
 </head>
 <body>
+    <!-- Sound Toggle -->
+    <button class="sound-toggle" id="sound-toggle" onclick="if(window.sfx)window.sfx.init();const enabled=window.sfx?window.sfx.toggle():false;this.textContent=enabled?'🔊':'🔇';" title="Toggle Sound">🔊</button>
+
     <!-- Language Selector -->
     <div class="language-selector">
         <button class="lang-btn" id="langBtn" title="Language">🌐</button>
         <div class="lang-menu hidden" id="langMenu">
-            <button class="lang-option active" data-lang="ko">한국어</button>
-            <button class="lang-option" data-lang="en">English</button>
-            <button class="lang-option" data-lang="zh">简体中文</button>
-            <button class="lang-option" data-lang="hi">हिन्दी</button>
-            <button class="lang-option" data-lang="ru">Русский</button>
+            <button class="lang-option active" data-lang="ko">🇰🇷 한국어</button>
+            <button class="lang-option" data-lang="en">🇺🇸 English</button>
+            <button class="lang-option" data-lang="ja">🇯🇵 日本語</button>
+            <button class="lang-option" data-lang="es">🇪🇸 Español</button>
+            <button class="lang-option" data-lang="pt">🇧🇷 Português</button>
+            <button class="lang-option" data-lang="zh">🇨🇳 简体中文</button>
+            <button class="lang-option" data-lang="id">🇮🇩 Bahasa Indonesia</button>
+            <button class="lang-option" data-lang="tr">🇹🇷 Türkçe</button>
+            <button class="lang-option" data-lang="de">🇩🇪 Deutsch</button>
+            <button class="lang-option" data-lang="fr">🇫🇷 Français</button>
+            <button class="lang-option" data-lang="hi">🇮🇳 हिन्दी</button>
+            <button class="lang-option" data-lang="ru">🇷🇺 Русский</button>
         </div>
     </div>
     <!-- Google Analytics -->
@@ -263,6 +273,7 @@
 
     <script src="js/i18n.js"></script>
     <script src="js/game-data.js"></script>
+    <script src="js/sound-engine.js"></script>
     <script src="js/app.js"></script>
     <script>
         // Initialize i18n and load translations
@@ -299,5 +310,29 @@
 
         initI18n();
     </script>
+
+    <style>
+        .sound-toggle {
+            position: fixed;
+            top: 12px;
+            right: 52px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .sound-toggle:hover { background: rgba(255,255,255,0.2); }
+        .sound-toggle:active { transform: scale(0.95); }
+    </style>
 </body>
 </html>

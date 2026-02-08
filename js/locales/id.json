@@ -1,0 +1,46 @@
+{
+  "app": {
+    "title": "Stack Tower - Permainan Arcade Timing",
+    "description": "Lepaskan blok pada waktu yang tepat untuk membangun menara di permainan arcade ini!"
+  },
+  "menu": {
+    "title": "Stack Tower",
+    "subtitle": "Bangun menara Anda dengan waktu yang tepat!",
+    "maxFloor": "Lantai Terbaik",
+    "maxScore": "Skor Terbaik",
+    "currentBadge": "Lencana Saat Ini",
+    "startGame": "Mulai Game",
+    "skins": "Kulit",
+    "stats": "Statistik"
+  },
+  "game": {
+    "floor": "Lantai",
+    "score": "Skor",
+    "gameOver": "Game Over!",
+    "finalFloor": "Lantai Akhir",
+    "acquiredScore": "Skor Diperoleh",
+    "perfectTiming": "Waktu Sempurna",
+    "revive": "Hidup Kembali",
+    "slowMotion": "Lambat",
+    "hint": "Petunjuk",
+    "reviveGame": "Hidup Kembali Game",
+    "restart": "Mulai Ulang",
+    "share": "Bagikan",
+    "mainMenu": "Menu Utama",
+    "recommendations": "Coba Juga",
+    "tapToStart": "👆 Ketuk untuk Memulai"
+  },
+  "skins": {
+    "title": "Tema Blok",
+    "back": "Kembali"
+  },
+  "leaderboard": {
+    "title": "Statistik",
+    "badges": "Lencana",
+    "stats": "Statistik",
+    "totalGames": "Total Game",
+    "totalFloors": "Total Lantai",
+    "avgFloor": "Lantai Rata-rata",
+    "perfectTotal": "Jumlah Sempurna"
+  }
+}
