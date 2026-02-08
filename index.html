@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#1a1a2e">
+    <meta name="description" content="좌우 왕복하는 블록을 정확한 타이밍에 떨어뜨려 탑을 쌓는 타이밍 아케이드 게임입니다.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Stack Tower - 타이밍 아케이드 게임">
+    <meta property="og:description" content="블록을 정확한 타이밍에 떨어뜨려 탑을 쌓아보세요!">
+    <meta property="og:type" content="game">
+    <meta property="og:url" content="https://swp1234.github.io/stack-tower/">
+    <meta property="og:image" content="https://swp1234.github.io/stack-tower/icon-512.svg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Stack Tower - 타이밍 아케이드 게임">
+    <meta name="twitter:description" content="블록을 정확한 타이밍에 떨어뜨려 탑을 쌓아보세요!">
+    <meta name="twitter:image" content="https://swp1234.github.io/stack-tower/icon-512.svg">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "VideoGame",
+        "name": "Stack Tower",
+        "description": "타이밍 아케이드 게임",
+        "url": "https://swp1234.github.io/stack-tower/",
+        "image": "https://swp1234.github.io/stack-tower/icon-512.svg",
+        "applicationCategory": "Game",
+        "genre": "Arcade"
+    }
+    </script>
+
+    <link rel="canonical" href="https://swp1234.github.io/stack-tower/">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="icon-192.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="icon-192.svg">
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Stack Tower - 타이밍 아케이드 게임</title>
+</head>
+<body>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J8GSWM40TV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-J8GSWM40TV', { 'anonymize_ip': true });
+    </script>
+
+    <div id="app" class="app">
+        <!-- Main Screen -->
+        <div id="mainScreen" class="screen active">
+            <div class="main-container">
+                <h1 class="title">스택 타워</h1>
+                <p class="subtitle">정확한 타이밍으로 탑을 쌓아보세요!</p>
+
+                <div class="stats-card">
+                    <div class="stat-item">
+                        <div class="stat-label">최고 층수</div>
+                        <div class="stat-value" id="maxFloor">0</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">최고 점수</div>
+                        <div class="stat-value" id="maxScore">0</div>
+                    </div>
+                </div>
+
+                <div class="badges-container">
+                    <div class="current-badge">
+                        <div class="badge-label">현재 칭호</div>
+                        <div class="badge-name" id="currentBadge">쌓기 입문자</div>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button id="startBtn" class="btn btn-primary">게임 시작</button>
+                    <button id="skinsBtn" class="btn btn-secondary">스킨</button>
+                    <button id="leaderboardBtn" class="btn btn-secondary">통계</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Screen -->
+        <div id="gameScreen" class="screen">
+            <div class="game-header">
+                <div class="game-info">
+                    <div class="info-item">
+                        <span class="info-label">층수</span>
+                        <span class="info-value" id="floorDisplay">1</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">점수</span>
+                        <span class="info-value" id="scoreDisplay">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top Banner Ad -->
+            <div class="ad-container ad-top" style="display:none;">
+                <span>AD</span>
+            </div>
+
+            <canvas id="gameCanvas" class="game-canvas"></canvas>
+            <div id="tap-hint" class="tap-hint" style="display:none;">👆 탭하여 시작</div>
+            <div id="hud-combo" class="hud-combo hidden"></div>
+
+            <!-- Power Up Buttons -->
+            <div class="powerup-container">
+                <button class="powerup-btn" id="reviveBtn" title="부활 (게임 오버 시)">
+                    <span class="powerup-icon">💫</span>
+                    <span class="powerup-label">부활</span>
+                </button>
+                <button class="powerup-btn" id="slowBtn" title="슬로우 모션">
+                    <span class="powerup-icon">⏱️</span>
+                    <span class="powerup-label">슬로우</span>
+                </button>
+                <button class="powerup-btn" id="hintBtn" title="힌트">
+                    <span class="powerup-icon">💡</span>
+                    <span class="powerup-label">힌트</span>
+                </button>
+            </div>
+
+            <!-- Bottom Banner Ad -->
+            <div class="ad-container ad-bottom" style="display:none;">
+                <span>AD</span>
+            </div>
+        </div>
+
+        <!-- Game Over Screen -->
+        <div id="gameOverScreen" class="screen">
+            <div class="game-over-container">
+                <h2 class="game-over-title">게임 오버!</h2>
+
+                <div class="result-stats">
+                    <div class="result-item">
+                        <span class="result-label">최종 층수</span>
+                        <span class="result-value" id="finalFloor">0</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">획득 점수</span>
+                        <span class="result-value" id="finalScore">0</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">완벽 타이밍</span>
+                        <span class="result-value" id="perfectCount">0</span>
+                    </div>
+                </div>
+
+                <div id="adContainer" class="ad-container ad-game-over"></div>
+
+                <div id="countdownContainer" style="display: none;" class="countdown">
+                    광고 로딩 중... (<span id="countdown">5</span>s)
+                </div>
+
+                <div class="result-buttons">
+                    <button id="reviveGameBtn" class="btn btn-primary">부활하기</button>
+                    <button id="restartBtn" class="btn btn-secondary">다시 시작</button>
+                    <button id="shareBtn" class="btn btn-tertiary">공유하기</button>
+                </div>
+
+                <button id="mainMenuBtn" class="btn btn-text">메인 메뉴</button>
+            </div>
+        </div>
+
+        <!-- Skin Selection Screen -->
+        <div id="skinScreen" class="screen">
+            <div class="skin-container">
+                <h2 class="skin-title">블록 테마 선택</h2>
+
+                <div class="skin-grid" id="skinGrid">
+                    <!-- Skins will be generated by JavaScript -->
+                </div>
+
+                <button id="skinBackBtn" class="btn btn-secondary">뒤로</button>
+            </div>
+        </div>
+
+        <!-- Leaderboard Screen -->
+        <div id="leaderboardScreen" class="screen">
+            <div class="leaderboard-container">
+                <h2 class="leaderboard-title">통계</h2>
+
+                <div class="leaderboard-tabs">
+                    <button class="tab-btn active" data-tab="badges">칭호</button>
+                    <button class="tab-btn" data-tab="stats">통계</button>
+                </div>
+
+                <div id="badgesContent" class="tab-content active">
+                    <div id="badgesList" class="badges-list">
+                        <!-- Badges will be generated by JavaScript -->
+                    </div>
+                </div>
+
+                <div id="statsContent" class="tab-content">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-label">총 플레이</div>
+                            <div class="stat-big-value" id="totalGames">0</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">총 층수</div>
+                            <div class="stat-big-value" id="totalFloors">0</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">평균 층수</div>
+                            <div class="stat-big-value" id="avgFloor">0</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">완벽 횟수</div>
+                            <div class="stat-big-value" id="perfectTotal">0</div>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="leaderboardBackBtn" class="btn btn-secondary">뒤로</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/game-data.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
