@@ -1071,7 +1071,7 @@ class StackTowerGame {
   shareResult() {
     const title = this.getCurrentTitle();
     const text = `🏗️ Stack Tower에서 ${this.floor}층 달성! (${title.emoji} ${title.name})\n점수: ${this.score}점 | 퍼펙트: ${this.perfectCount}회\n도전해보세요!`;
-    const url = 'https://swp1234.github.io/stack-tower/';
+    const url = 'https://dopabrain.com/stack-tower/';
 
     if (navigator.share) {
       navigator.share({ title: 'Stack Tower', text, url }).catch(() => {});
