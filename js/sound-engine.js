@@ -78,20 +78,24 @@ class SoundEngine {
 
         // Apply filter for colored noise
         const source = this.ctx.createBufferSource();
-        const filter = this.ctx.createBiquadFilter();
         const gain = this.ctx.createGain();
-
-        if (color === 'pink') {
-            filter.type = 'highpass';
-            filter.frequency.value = 200;
-        } else if (color === 'brown') {
-            filter.type = 'lowpass';
-            filter.frequency.value = 500;
-        }
-
         source.buffer = buffer;
-        source.connect(filter);
-        filter.connect(gain);
+
+        if (color === 'pink' || color === 'brown') {
+            const filter = this.ctx.createBiquadFilter();
+            if (color === 'pink') {
+                filter.type = 'highpass';
+                filter.frequency.value = 200;
+            } else {
+                filter.type = 'lowpass';
+                filter.frequency.value = 500;
+            }
+            source.connect(filter);
+            filter.connect(gain);
+        } else {
+            // White noise - bypass filter
+            source.connect(gain);
+        }
         gain.connect(this.masterGain);
 
         // Envelope
@@ -242,8 +246,14 @@ class SoundEngine {
 }
 
 // Global instance
-const sfx = new SoundEngine();
+window.sfx = new SoundEngine();
 
 // Auto-initialize on user interaction
-document.addEventListener('click', () => sfx.init(), { once: true });
-document.addEventListener('touchstart', () => sfx.init(), { once: true });
+document.addEventListener('click', () => window.sfx.init(), { once: true });
+document.addEventListener('touchstart', () => window.sfx.init(), { once: true });
+
+// Sync button icon with stored preference
+document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('sound-toggle');
+    if (btn) btn.textContent = window.sfx.enabled ? '🔊' : '🔇';
+});
