@@ -253,6 +253,7 @@ class StackTowerGame {
     if (!this.movingBlock || !this.movingBlock.moving) return;
     this.movingBlock.moving = false;
     this.state = 'falling';
+    if (window.sfx) window.sfx.place();
 
     // Calculate overlap with top of stack
     const prev = this.stack[this.stack.length - 1];
@@ -283,6 +284,7 @@ class StackTowerGame {
       this.bestStreak = Math.max(this.bestStreak, this.perfectStreak);
       this.score += 50 + this.combo * 10;
 
+      if (window.sfx) window.sfx.perfect();
       this.spawnParticles(curr.x + curr.w / 2, curr.y + curr.h / 2, '#2ecc71', 30);
       this.showFeedback('PERFECT!', '#2ecc71');
       this.shakeAmount = 8;
@@ -291,6 +293,7 @@ class StackTowerGame {
 
       // Grow block slightly on consecutive perfects
       if (this.combo >= 3) {
+        if (window.sfx) window.sfx.combo(this.combo);
         const growth = Math.min(this.combo * 2, 20);
         const maxW = 200;
         const newW = Math.min(curr.w + growth, maxW);
@@ -373,6 +376,7 @@ class StackTowerGame {
   triggerGameOver() {
     this.state = 'gameover';
     this.playCount++;
+    if (window.sfx) window.sfx.gameOver();
     this.stats.totalGames++;
     this.stats.totalPerfects += this.perfectCount;
     this.stats.bestStreak = Math.max(this.stats.bestStreak, this.bestStreak);
@@ -474,8 +478,7 @@ class StackTowerGame {
     const dt = this.lastTime ? Math.min((timestamp - this.lastTime) / 16.67, 2) : 1;
     this.lastTime = timestamp;
 
-    this.update(dt);
-    this.render();
+    try { this.update(dt); this.render(); } catch(e) { console.error('Game loop error:', e); }
     requestAnimationFrame((t) => this.loop(t));
   }
 
@@ -747,10 +750,10 @@ class StackTowerGame {
     grad.addColorStop(1, this.darkenColor(color, 20));
     ctx.fillStyle = grad;
 
-    // Neon glow
-    if (theme.glowEffect) {
+    // Neon glow (only for top 3 blocks to save performance)
+    if (theme.glowEffect && block === this.stack[this.stack.length - 1] || block === this.currentBlock) {
       ctx.shadowColor = color;
-      ctx.shadowBlur = 18;
+      ctx.shadowBlur = 12;
     }
 
     ctx.fillRect(x, y, w, h);
