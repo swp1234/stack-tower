@@ -1,18 +1,19 @@
 // Stack Tower - Game Data (Themes, Titles, Config)
 
 const GAME_CONFIG = {
-  canvasWidth: 480,
-  canvasHeight: 800,
-  blockInitialWidth: 200,
-  blockHeight: 32,
-  blockInitialSpeed: 2.0,
-  speedIncrement: 0.1,
+  canvasWidth: 400,
+  canvasHeight: 700,
+  blockInitialWidth: 160,
+  blockHeight: 28,
+  blockInitialSpeed: 2.5,
+  speedIncrement: 0.3,
   speedIncrementInterval: 5,
-  maxSpeedMultiplier: 3.0,
-  gravity: 0.6,
+  maxSpeed: 8,
+  gravity: 0.5,
   perfectThreshold: 5,
   goodThreshold: 15,
-  minBlockWidth: 15,
+  minBlockWidth: 12,
+  maxBlockWidth: 200,
   scoring: {
     basePoints: 10,
     perfectBonus: 50,

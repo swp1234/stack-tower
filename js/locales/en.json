@@ -29,11 +29,20 @@
     "share": "Share",
     "mainMenu": "Main Menu",
     "recommendations": "Try These Too",
-    "tapToStart": "👆 Tap to Start"
+    "tapToStart": "👆 Tap to Start",
+    "floorValue": "{value}",
+    "perfectValue": "{value}",
+    "newBestRecord": "🎉 New Best Record!",
+    "shareText": "🏗️ Reached floor {floor} in Stack Tower! ({emoji} {title})\nScore: {score} | Perfects: {perfect}\nTry it!",
+    "copiedToClipboard": "Result copied to clipboard!",
+    "copyPrompt": "Copy the result:",
+    "adLoading": "Loading ad..."
   },
   "skins": {
     "title": "Block Theme",
-    "back": "Back"
+    "back": "Back",
+    "unlockReq": "🔒 Reach floor {floor}",
+    "inUse": "✓ In Use"
   },
   "leaderboard": {
     "title": "Statistics",
@@ -43,5 +52,51 @@
     "totalFloors": "Total Floors",
     "avgFloor": "Avg Floor",
     "perfectTotal": "Perfect Count"
+  },
+  "themes": {
+    "classic": "Classic",
+    "neon": "Neon",
+    "space": "Space",
+    "candy": "Candy",
+    "retro": "Retro"
+  },
+  "titles": {
+    "1": "Stacking Beginner",
+    "5": "Novice Builder",
+    "10": "Apprentice Builder",
+    "15": "Skilled Builder",
+    "20": "Expert Builder",
+    "25": "Master Builder",
+    "30": "Tower Expert",
+    "40": "Skyscraper",
+    "50": "High-rise Builder",
+    "60": "Cloud Conqueror",
+    "70": "Sky Ruler",
+    "80": "Space Architect",
+    "90": "Galaxy Builder",
+    "100": "Masterpiece",
+    "125": "Legendary Tower",
+    "150": "Mythical Architect",
+    "200": "Dimension Transcender",
+    "250": "Spacetime Ruler",
+    "300": "The Absolute",
+    "500": "Divine Level"
+  },
+  "specialTitles": {
+    "perfect_10": "Perfectionist",
+    "perfect_30": "Timing God",
+    "veteran": "Veteran",
+    "legend": "Legend"
+  },
+  "badges": {
+    "perfectStreakDesc": "{value} perfects in a row",
+    "totalFloorsDesc": "Total {value} floors",
+    "floorDesc": "Floor {value}"
+  },
+  "rec": {
+    "skyRunnerDesc": "Space flight arcade game!",
+    "zigzagDesc": "Direction-switching arcade game!",
+    "emojiMergeName": "Emoji Merge",
+    "emojiMergeDesc": "Merge emojis to evolve!"
   }
 }

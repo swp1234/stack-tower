@@ -24,16 +24,25 @@
     "revive": "Hidup Kembali",
     "slowMotion": "Lambat",
     "hint": "Petunjuk",
-    "reviveGame": "Hidup Kembali Game",
+    "reviveGame": "Hidupkan Kembali Game",
     "restart": "Mulai Ulang",
     "share": "Bagikan",
     "mainMenu": "Menu Utama",
     "recommendations": "Coba Juga",
-    "tapToStart": "👆 Ketuk untuk Memulai"
+    "tapToStart": "👆 Ketuk untuk Memulai",
+    "floorValue": "{value}",
+    "perfectValue": "{value}",
+    "newBestRecord": "🎉 Rekor Baru!",
+    "shareText": "🏗️ Mencapai lantai {floor} di Stack Tower! ({emoji} {title})\nSkor: {score} | Sempurna: {perfect}\nCoba mainkan!",
+    "copiedToClipboard": "Hasil disalin ke clipboard!",
+    "copyPrompt": "Salin hasilnya:",
+    "adLoading": "Memuat iklan..."
   },
   "skins": {
     "title": "Tema Blok",
-    "back": "Kembali"
+    "back": "Kembali",
+    "unlockReq": "🔒 Capai lantai {floor}",
+    "inUse": "✓ Digunakan"
   },
   "leaderboard": {
     "title": "Statistik",
@@ -43,5 +52,51 @@
     "totalFloors": "Total Lantai",
     "avgFloor": "Lantai Rata-rata",
     "perfectTotal": "Jumlah Sempurna"
+  },
+  "themes": {
+    "classic": "Klasik",
+    "neon": "Neon",
+    "space": "Luar Angkasa",
+    "candy": "Permen",
+    "retro": "Retro"
+  },
+  "titles": {
+    "1": "Pemula Menumpuk",
+    "5": "Pembangun Pemula",
+    "10": "Pembangun Magang",
+    "15": "Pembangun Terampil",
+    "20": "Pembangun Ahli",
+    "25": "Pembangun Master",
+    "30": "Ahli Menara",
+    "40": "Pencakar Langit",
+    "50": "Pembangun Ketinggian",
+    "60": "Penakluk Awan",
+    "70": "Penguasa Langit",
+    "80": "Arsitek Luar Angkasa",
+    "90": "Pembangun Galaksi",
+    "100": "Mahakarya",
+    "125": "Menara Legendaris",
+    "150": "Arsitek Mitologis",
+    "200": "Pelampaui Dimensi",
+    "250": "Penguasa Ruang-Waktu",
+    "300": "Yang Absolut",
+    "500": "Tingkat Ilahi"
+  },
+  "specialTitles": {
+    "perfect_10": "Perfeksionis",
+    "perfect_30": "Dewa Timing",
+    "veteran": "Veteran",
+    "legend": "Legenda"
+  },
+  "badges": {
+    "perfectStreakDesc": "{value} sempurna berturut-turut",
+    "totalFloorsDesc": "Total {value} lantai",
+    "floorDesc": "Lantai {value}"
+  },
+  "rec": {
+    "skyRunnerDesc": "Permainan arcade penerbangan luar angkasa!",
+    "zigzagDesc": "Permainan arcade ganti arah!",
+    "emojiMergeName": "Emoji Merge",
+    "emojiMergeDesc": "Gabung emoji untuk berevolusi!"
   }
 }

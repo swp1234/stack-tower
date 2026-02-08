@@ -429,6 +429,9 @@ class StackTowerGame {
       this.slowActive = true;
       this.slowTimer = 300; // 5 seconds at 60fps
       this.showFeedback('SLOW MOTION!', '#9b59b6');
+      if (typeof gtag === 'function') {
+        gtag('event', 'use_powerup', { powerup_type: 'slow_motion', floor: this.floor });
+      }
     });
   }
 
@@ -438,6 +441,9 @@ class StackTowerGame {
       this.hintActive = true;
       this.hintTimer = 180; // 3 seconds
       this.showFeedback('HINT ON!', '#3498db');
+      if (typeof gtag === 'function') {
+        gtag('event', 'use_powerup', { powerup_type: 'hint', floor: this.floor });
+      }
     });
   }
 
@@ -518,13 +524,6 @@ class StackTowerGame {
 
     // Camera interpolation
     this.cameraY += (this.targetCameraY - this.cameraY) * 0.08 * dt;
-
-    // Squash animation on blocks
-    for (const block of this.stack) {
-      if (block.squash !== undefined && block.squash < 1) {
-        // Not used currently, reserved
-      }
-    }
 
     // Slow motion timer
     if (this.slowActive) {
@@ -750,8 +749,8 @@ class StackTowerGame {
     grad.addColorStop(1, this.darkenColor(color, 20));
     ctx.fillStyle = grad;
 
-    // Neon glow (only for top 3 blocks to save performance)
-    if (theme.glowEffect && block === this.stack[this.stack.length - 1] || block === this.currentBlock) {
+    // Neon glow (only for top block and moving block to save performance)
+    if (theme.glowEffect && (block === this.stack[this.stack.length - 1] || block === this.movingBlock)) {
       ctx.shadowColor = color;
       ctx.shadowBlur = 12;
     }
@@ -901,6 +900,18 @@ class StackTowerGame {
       this.activateHint();
     });
 
+    // Language change callback
+    if (typeof i18n !== 'undefined') {
+      i18n.onLanguageChange = () => {
+        this.updateMainUI();
+        if (this.screen === 'skin') this.renderThemeSelection();
+        if (this.screen === 'leaderboard') {
+          this.renderBadges();
+          this.updateStatsDisplay();
+        }
+        if (this.screen === 'gameOver') this.updateGameOverUI(false);
+      };
+    }
   }
 
   updateScreen() {
@@ -925,7 +936,7 @@ class StackTowerGame {
     if (maxScoreEl) maxScoreEl.textContent = this.stats.maxScore;
     if (badgeEl) {
       const badge = this.getCurrentTitle();
-      badgeEl.textContent = `${badge.emoji} ${badge.name}`;
+      badgeEl.textContent = `${badge.emoji} ${this.getLocalizedTitleName(badge)}`;
     }
   }
 
@@ -941,9 +952,9 @@ class StackTowerGame {
     const scoreEl = document.getElementById('finalScore');
     const perfectEl = document.getElementById('perfectCount');
 
-    if (floorEl) floorEl.textContent = this.floor + '층';
+    if (floorEl) floorEl.textContent = this._t('game.floorValue', { value: this.floor });
     if (scoreEl) scoreEl.textContent = this.score;
-    if (perfectEl) perfectEl.textContent = this.perfectCount + '회';
+    if (perfectEl) perfectEl.textContent = this._t('game.perfectValue', { value: this.perfectCount });
 
     // Title at result
     const title = this.getCurrentTitle();
@@ -956,7 +967,7 @@ class StackTowerGame {
         titleEl.style.cssText = 'grid-column: 1/-1; text-align:center; font-size:1.2rem; font-weight:700; color:#ffd700; padding-top:0.5rem;';
         titleContainer.appendChild(titleEl);
       }
-      titleEl.textContent = `${title.emoji} ${title.name}`;
+      titleEl.textContent = `${title.emoji} ${this.getLocalizedTitleName(title)}`;
     }
 
     // New best indicator
@@ -970,7 +981,7 @@ class StackTowerGame {
         const title = newBestEl.querySelector('.game-over-title');
         if (title) title.after(bestTag);
       }
-      bestTag.textContent = '🎉 새로운 최고 기록!';
+      bestTag.textContent = this._t('game.newBestRecord');
       bestTag.style.display = 'block';
     } else {
       const bestTag = document.getElementById('newBestTag');
@@ -1042,18 +1053,18 @@ class StackTowerGame {
 
       const nameDiv = document.createElement('div');
       nameDiv.className = 'skin-name';
-      nameDiv.textContent = `${theme.emoji} ${theme.name}`;
+      nameDiv.textContent = `${theme.emoji} ${this.getLocalizedThemeName(theme)}`;
       card.appendChild(nameDiv);
 
       if (isLocked) {
         const lockDiv = document.createElement('div');
         lockDiv.className = 'skin-unlock';
-        lockDiv.textContent = `🔒 ${theme.unlockFloor}층 달성`;
+        lockDiv.textContent = this._t('skins.unlockReq', { floor: theme.unlockFloor });
         card.appendChild(lockDiv);
       } else if (isSelected) {
         const badge = document.createElement('div');
         badge.className = 'skin-badge';
-        badge.textContent = '✓ 사용 중';
+        badge.textContent = this._t('skins.inUse');
         badge.style.color = '#2ecc71';
         card.appendChild(badge);
       }
@@ -1110,8 +1121,8 @@ class StackTowerGame {
       item.className = `badge-item ${unlocked ? 'unlocked' : ''}`;
       item.innerHTML = `
         <div class="badge-icon">${unlocked ? t.emoji : '🔒'}</div>
-        <div class="badge-item-name">${t.name}</div>
-        <div class="badge-item-desc">${t.floor}층</div>
+        <div class="badge-item-name">${this.getLocalizedTitleName(t)}</div>
+        <div class="badge-item-desc">${this._t('badges.floorDesc', { value: t.floor })}</div>
       `;
       list.appendChild(item);
     }
@@ -1121,10 +1132,13 @@ class StackTowerGame {
       const unlocked = this.unlockedBadges.includes(s.id);
       const item = document.createElement('div');
       item.className = `badge-item ${unlocked ? 'unlocked' : ''}`;
+      const desc = s.condition === 'perfect_streak'
+        ? this._t('badges.perfectStreakDesc', { value: s.value })
+        : this._t('badges.totalFloorsDesc', { value: s.value.toLocaleString() });
       item.innerHTML = `
         <div class="badge-icon">${unlocked ? s.emoji : '🔒'}</div>
-        <div class="badge-item-name">${s.name}</div>
-        <div class="badge-item-desc">${s.condition === 'perfect_streak' ? `퍼펙트 ${s.value}연속` : `총 ${s.value.toLocaleString()}층`}</div>
+        <div class="badge-item-name">${this.getLocalizedSpecialTitleName(s)}</div>
+        <div class="badge-item-desc">${desc}</div>
       `;
       list.appendChild(item);
     }
@@ -1144,18 +1158,25 @@ class StackTowerGame {
 
   // === SHARE ===
   shareResult() {
-    const title = this.getCurrentTitle();
-    const text = `🏗️ Stack Tower에서 ${this.floor}층 달성! (${title.emoji} ${title.name})\n점수: ${this.score}점 | 퍼펙트: ${this.perfectCount}회\n도전해보세요!`;
+    const titleData = this.getCurrentTitle();
+    const text = this._t('game.shareText', {
+      floor: this.floor,
+      emoji: titleData.emoji,
+      title: this.getLocalizedTitleName(titleData),
+      score: this.score,
+      perfect: this.perfectCount
+    });
     const url = 'https://dopabrain.com/stack-tower/';
 
     if (navigator.share) {
       navigator.share({ title: 'Stack Tower', text, url }).catch(() => {});
     } else {
-      // Copy to clipboard
+      const copiedMsg = this._t('game.copiedToClipboard');
+      const copyPrompt = this._t('game.copyPrompt');
       navigator.clipboard?.writeText(text + '\n' + url).then(() => {
-        alert('결과가 클립보드에 복사되었습니다!');
+        alert(copiedMsg);
       }).catch(() => {
-        prompt('결과를 복사하세요:', text + '\n' + url);
+        prompt(copyPrompt, text + '\n' + url);
       });
     }
 
@@ -1186,6 +1207,29 @@ class StackTowerGame {
         if (callback) callback();
       }
     }, 1000);
+  }
+
+  // === I18N HELPERS ===
+  _t(key, vars) {
+    return typeof i18n !== 'undefined' ? i18n.t(key, vars) : key;
+  }
+
+  getLocalizedTitleName(titleObj) {
+    const key = 'titles.' + titleObj.floor;
+    const val = this._t(key);
+    return val !== key ? val : titleObj.name;
+  }
+
+  getLocalizedSpecialTitleName(specialObj) {
+    const key = 'specialTitles.' + specialObj.id;
+    const val = this._t(key);
+    return val !== key ? val : specialObj.name;
+  }
+
+  getLocalizedThemeName(themeObj) {
+    const key = 'themes.' + themeObj.id;
+    const val = this._t(key);
+    return val !== key ? val : themeObj.name;
   }
 
   // === COLOR UTILS ===

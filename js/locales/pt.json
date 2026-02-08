@@ -29,11 +29,20 @@
     "share": "Compartilhar",
     "mainMenu": "Menu Principal",
     "recommendations": "Experimente também",
-    "tapToStart": "👆 Toque para Começar"
+    "tapToStart": "👆 Toque para Começar",
+    "floorValue": "{value}",
+    "perfectValue": "{value}",
+    "newBestRecord": "🎉 Novo Recorde!",
+    "shareText": "🏗️ Cheguei ao andar {floor} no Stack Tower! ({emoji} {title})\nPontuação: {score} | Perfeitos: {perfect}\nExperimente!",
+    "copiedToClipboard": "Resultado copiado para a área de transferência!",
+    "copyPrompt": "Copie o resultado:",
+    "adLoading": "Carregando anúncio..."
   },
   "skins": {
     "title": "Tema de Bloco",
-    "back": "Voltar"
+    "back": "Voltar",
+    "unlockReq": "🔒 Alcance o andar {floor}",
+    "inUse": "✓ Em Uso"
   },
   "leaderboard": {
     "title": "Estatísticas",
@@ -43,5 +52,51 @@
     "totalFloors": "Total de Andares",
     "avgFloor": "Andar Médio",
     "perfectTotal": "Contagem Perfeita"
+  },
+  "themes": {
+    "classic": "Clássico",
+    "neon": "Neon",
+    "space": "Espaço",
+    "candy": "Doce",
+    "retro": "Retrô"
+  },
+  "titles": {
+    "1": "Iniciante",
+    "5": "Construtor Novato",
+    "10": "Aprendiz de Construtor",
+    "15": "Construtor Habilidoso",
+    "20": "Construtor Especialista",
+    "25": "Mestre Construtor",
+    "30": "Especialista em Torres",
+    "40": "Arranha-céu",
+    "50": "Construtor de Alturas",
+    "60": "Conquistador das Nuvens",
+    "70": "Senhor do Céu",
+    "80": "Arquiteto Espacial",
+    "90": "Construtor Galáctico",
+    "100": "Obra-prima",
+    "125": "Torre Lendária",
+    "150": "Arquiteto Mítico",
+    "200": "Transcendente Dimensional",
+    "250": "Senhor do Espaço-Tempo",
+    "300": "O Absoluto",
+    "500": "Nível Divino"
+  },
+  "specialTitles": {
+    "perfect_10": "Perfeccionista",
+    "perfect_30": "Deus do Timing",
+    "veteran": "Veterano",
+    "legend": "Lenda"
+  },
+  "badges": {
+    "perfectStreakDesc": "{value} perfeitos seguidos",
+    "totalFloorsDesc": "Total de {value} andares",
+    "floorDesc": "Andar {value}"
+  },
+  "rec": {
+    "skyRunnerDesc": "Jogo arcade de voo espacial!",
+    "zigzagDesc": "Jogo arcade de mudança de direção!",
+    "emojiMergeName": "Emoji Merge",
+    "emojiMergeDesc": "Combine emojis para evoluir!"
   }
 }

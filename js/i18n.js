@@ -25,12 +25,17 @@ class I18n {
         }
     }
 
-    t(key) {
+    t(key, params) {
         const keys = key.split('.');
         let value = this.translations[this.currentLang];
         for (const k of keys) {
-            if (value && value[k]) value = value[k];
+            if (value && value[k] !== undefined) value = value[k];
             else return key;
+        }
+        if (params && typeof value === 'string') {
+            Object.keys(params).forEach(p => {
+                value = value.replace(new RegExp('\\{' + p + '\\}', 'g'), params[p]);
+            });
         }
         return value;
     }
@@ -42,6 +47,7 @@ class I18n {
         localStorage.setItem('app_language', lang);
         document.documentElement.lang = lang;
         this.updateUI();
+        if (this.onLanguageChange) this.onLanguageChange(lang);
         return true;
     }
 

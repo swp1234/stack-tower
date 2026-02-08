@@ -29,11 +29,20 @@
     "share": "Teilen",
     "mainMenu": "Hauptmenü",
     "recommendations": "Probiere auch diese",
-    "tapToStart": "👆 Tippe zum Starten"
+    "tapToStart": "👆 Tippe zum Starten",
+    "floorValue": "{value}",
+    "perfectValue": "{value}",
+    "newBestRecord": "🎉 Neuer Rekord!",
+    "shareText": "🏗️ Etage {floor} in Stack Tower erreicht! ({emoji} {title})\nPunktzahl: {score} | Perfekt: {perfect}\nProbier es aus!",
+    "copiedToClipboard": "Ergebnis in die Zwischenablage kopiert!",
+    "copyPrompt": "Ergebnis kopieren:",
+    "adLoading": "Werbung wird geladen..."
   },
   "skins": {
     "title": "Block-Design",
-    "back": "Zurück"
+    "back": "Zurück",
+    "unlockReq": "🔒 Etage {floor} erreichen",
+    "inUse": "✓ In Verwendung"
   },
   "leaderboard": {
     "title": "Statistik",
@@ -43,5 +52,51 @@
     "totalFloors": "Gesamtetagen",
     "avgFloor": "Durchschn. Etage",
     "perfectTotal": "Perfekte Anzahl"
+  },
+  "themes": {
+    "classic": "Klassisch",
+    "neon": "Neon",
+    "space": "Weltraum",
+    "candy": "Süßigkeit",
+    "retro": "Retro"
+  },
+  "titles": {
+    "1": "Stapel-Anfänger",
+    "5": "Neuling-Baumeister",
+    "10": "Lehrling-Baumeister",
+    "15": "Erfahrener Baumeister",
+    "20": "Experten-Baumeister",
+    "25": "Meister-Baumeister",
+    "30": "Turm-Experte",
+    "40": "Wolkenkratzer",
+    "50": "Hochhaus-Erbauer",
+    "60": "Wolken-Eroberer",
+    "70": "Himmels-Herrscher",
+    "80": "Weltraum-Architekt",
+    "90": "Galaxie-Erbauer",
+    "100": "Meisterwerk",
+    "125": "Legendärer Turm",
+    "150": "Mythischer Architekt",
+    "200": "Dimensions-Überschreiter",
+    "250": "Raumzeit-Herrscher",
+    "300": "Der Absolute",
+    "500": "Göttliches Niveau"
+  },
+  "specialTitles": {
+    "perfect_10": "Perfektionist",
+    "perfect_30": "Timing-Gott",
+    "veteran": "Veteran",
+    "legend": "Legende"
+  },
+  "badges": {
+    "perfectStreakDesc": "{value} Perfekte in Folge",
+    "totalFloorsDesc": "Insgesamt {value} Etagen",
+    "floorDesc": "Etage {value}"
+  },
+  "rec": {
+    "skyRunnerDesc": "Weltraum-Flug Arcade-Spiel!",
+    "zigzagDesc": "Richtungswechsel Arcade-Spiel!",
+    "emojiMergeName": "Emoji Merge",
+    "emojiMergeDesc": "Emojis verschmelzen und weiterentwickeln!"
   }
 }

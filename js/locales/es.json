@@ -29,11 +29,20 @@
     "share": "Compartir",
     "mainMenu": "Menú Principal",
     "recommendations": "Prueba Estos También",
-    "tapToStart": "👆 Toca para Comenzar"
+    "tapToStart": "👆 Toca para Comenzar",
+    "floorValue": "{value}",
+    "perfectValue": "{value}",
+    "newBestRecord": "🎉 ¡Nuevo Récord!",
+    "shareText": "🏗️ ¡Alcancé el piso {floor} en Stack Tower! ({emoji} {title})\nPuntuación: {score} | Perfectos: {perfect}\n¡Inténtalo!",
+    "copiedToClipboard": "¡Resultado copiado al portapapeles!",
+    "copyPrompt": "Copia el resultado:",
+    "adLoading": "Cargando anuncio..."
   },
   "skins": {
     "title": "Tema de Bloque",
-    "back": "Atrás"
+    "back": "Atrás",
+    "unlockReq": "🔒 Alcanza el piso {floor}",
+    "inUse": "✓ En Uso"
   },
   "leaderboard": {
     "title": "Estadísticas",
@@ -43,5 +52,51 @@
     "totalFloors": "Total de Pisos",
     "avgFloor": "Piso Promedio",
     "perfectTotal": "Recuento Perfecto"
+  },
+  "themes": {
+    "classic": "Clásico",
+    "neon": "Neón",
+    "space": "Espacio",
+    "candy": "Caramelo",
+    "retro": "Retro"
+  },
+  "titles": {
+    "1": "Principiante",
+    "5": "Constructor Novato",
+    "10": "Aprendiz de Constructor",
+    "15": "Constructor Hábil",
+    "20": "Constructor Experto",
+    "25": "Constructor Maestro",
+    "30": "Experto en Torres",
+    "40": "Rascacielos",
+    "50": "Constructor de Alturas",
+    "60": "Conquistador de Nubes",
+    "70": "Señor del Cielo",
+    "80": "Arquitecto Espacial",
+    "90": "Constructor Galáctico",
+    "100": "Obra Maestra",
+    "125": "Torre Legendaria",
+    "150": "Arquitecto Mítico",
+    "200": "Trascendedor Dimensional",
+    "250": "Señor del Espacio-Tiempo",
+    "300": "El Absoluto",
+    "500": "Nivel Divino"
+  },
+  "specialTitles": {
+    "perfect_10": "Perfeccionista",
+    "perfect_30": "Dios del Timing",
+    "veteran": "Veterano",
+    "legend": "Leyenda"
+  },
+  "badges": {
+    "perfectStreakDesc": "{value} perfectos seguidos",
+    "totalFloorsDesc": "Total {value} pisos",
+    "floorDesc": "Piso {value}"
+  },
+  "rec": {
+    "skyRunnerDesc": "¡Juego arcade de vuelo espacial!",
+    "zigzagDesc": "¡Juego arcade de cambio de dirección!",
+    "emojiMergeName": "Emoji Merge",
+    "emojiMergeDesc": "¡Combina emojis para evolucionar!"
   }
 }

@@ -29,11 +29,20 @@
     "share": "공유하기",
     "mainMenu": "메인 메뉴",
     "recommendations": "이것도 해보세요",
-    "tapToStart": "👆 탭하여 시작"
+    "tapToStart": "👆 탭하여 시작",
+    "floorValue": "{value}층",
+    "perfectValue": "{value}회",
+    "newBestRecord": "🎉 새로운 최고 기록!",
+    "shareText": "🏗️ Stack Tower에서 {floor}층 달성! ({emoji} {title})\n점수: {score}점 | 퍼펙트: {perfect}회\n도전해보세요!",
+    "copiedToClipboard": "결과가 클립보드에 복사되었습니다!",
+    "copyPrompt": "결과를 복사하세요:",
+    "adLoading": "광고 로딩 중..."
   },
   "skins": {
     "title": "블록 테마 선택",
-    "back": "뒤로"
+    "back": "뒤로",
+    "unlockReq": "🔒 {floor}층 달성",
+    "inUse": "✓ 사용 중"
   },
   "leaderboard": {
     "title": "통계",
@@ -43,5 +52,51 @@
     "totalFloors": "총 층수",
     "avgFloor": "평균 층수",
     "perfectTotal": "완벽 횟수"
+  },
+  "themes": {
+    "classic": "클래식",
+    "neon": "네온",
+    "space": "우주",
+    "candy": "캔디",
+    "retro": "레트로"
+  },
+  "titles": {
+    "1": "쌓기 입문자",
+    "5": "초보 건축가",
+    "10": "견습 건축가",
+    "15": "숙련된 건축가",
+    "20": "전문 건축가",
+    "25": "마스터 건축가",
+    "30": "타워 전문가",
+    "40": "스카이스크래퍼",
+    "50": "마천루 건설자",
+    "60": "구름 정복자",
+    "70": "하늘의 지배자",
+    "80": "우주 건축가",
+    "90": "은하계 건설자",
+    "100": "세기의 건축물",
+    "125": "전설의 탑",
+    "150": "신화의 건축가",
+    "200": "차원 초월자",
+    "250": "시공간 지배자",
+    "300": "절대자",
+    "500": "신의 경지"
+  },
+  "specialTitles": {
+    "perfect_10": "퍼펙셔니스트",
+    "perfect_30": "타이밍의 신",
+    "veteran": "베테랑",
+    "legend": "레전드"
+  },
+  "badges": {
+    "perfectStreakDesc": "퍼펙트 {value}연속",
+    "totalFloorsDesc": "총 {value}층",
+    "floorDesc": "{value}층"
+  },
+  "rec": {
+    "skyRunnerDesc": "우주 비행 아케이드 게임!",
+    "zigzagDesc": "방향 전환 아케이드 게임!",
+    "emojiMergeName": "이모지 머지",
+    "emojiMergeDesc": "이모지 합쳐 진화시키기!"
   }
 }

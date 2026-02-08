@@ -138,10 +138,6 @@
 
             <!-- Power Up Buttons -->
             <div class="powerup-container">
-                <button class="powerup-btn" id="reviveBtn" title="부활 (게임 오버 시)">
-                    <span class="powerup-icon">💫</span>
-                    <span class="powerup-label" data-i18n="game.revive">부활</span>
-                </button>
                 <button class="powerup-btn" id="slowBtn" title="슬로우 모션">
                     <span class="powerup-icon">⏱️</span>
                     <span class="powerup-label" data-i18n="game.slowMotion">슬로우</span>
@@ -181,7 +177,7 @@
                 <div id="adContainer" class="ad-container ad-game-over"></div>
 
                 <div id="countdownContainer" style="display: none;" class="countdown">
-                    광고 로딩 중... (<span id="countdown">5</span>s)
+                    <span data-i18n="game.adLoading">광고 로딩 중...</span> (<span id="countdown">5</span>s)
                 </div>
 
                 <div class="result-buttons">
@@ -199,21 +195,21 @@
                             <span class="rec-icon">🚀</span>
                             <span class="rec-info">
                                 <span class="rec-name">Sky Runner</span>
-                                <span class="rec-desc">우주 비행 아케이드 게임!</span>
+                                <span class="rec-desc" data-i18n="rec.skyRunnerDesc">우주 비행 아케이드 게임!</span>
                             </span>
                         </a>
                         <a href="https://dopabrain.com/zigzag-runner/" class="rec-card" target="_blank">
                             <span class="rec-icon">🏃</span>
                             <span class="rec-info">
                                 <span class="rec-name">Zigzag Runner</span>
-                                <span class="rec-desc">방향 전환 아케이드 게임!</span>
+                                <span class="rec-desc" data-i18n="rec.zigzagDesc">방향 전환 아케이드 게임!</span>
                             </span>
                         </a>
                         <a href="https://dopabrain.com/emoji-merge/" class="rec-card" target="_blank">
                             <span class="rec-icon">🧬</span>
                             <span class="rec-info">
-                                <span class="rec-name">이모지 머지</span>
-                                <span class="rec-desc">이모지 합쳐 진화시키기!</span>
+                                <span class="rec-name" data-i18n="rec.emojiMergeName">이모지 머지</span>
+                                <span class="rec-desc" data-i18n="rec.emojiMergeDesc">이모지 합쳐 진화시키기!</span>
                             </span>
                         </a>
                     </div>

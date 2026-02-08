@@ -1,39 +1,48 @@
 {
   "app": {
     "title": "Stack Tower - Jeu d'Arcade de Timing",
-    "description": "Dépose les blocs au moment parfait pour construire une tour dans ce jeu d'arcade!"
+    "description": "Dépose les blocs au moment parfait pour construire une tour dans ce jeu d'arcade !"
   },
   "menu": {
     "title": "Stack Tower",
-    "subtitle": "Construis ta tour avec un timing parfait!",
+    "subtitle": "Construis ta tour avec un timing parfait !",
     "maxFloor": "Meilleur Étage",
     "maxScore": "Meilleur Score",
     "currentBadge": "Badge Actuel",
     "startGame": "Commencer le Jeu",
-    "skins": "Skins",
+    "skins": "Apparences",
     "stats": "Statistiques",
     "home": "DopaBrain Accueil"
   },
   "game": {
     "floor": "Étage",
     "score": "Score",
-    "gameOver": "Fin de Partie!",
+    "gameOver": "Fin de Partie !",
     "finalFloor": "Étage Final",
     "acquiredScore": "Score Obtenu",
     "perfectTiming": "Timing Parfait",
-    "revive": "Revivifier",
+    "revive": "Ressusciter",
     "slowMotion": "Ralenti",
     "hint": "Indice",
-    "reviveGame": "Revivifier le Jeu",
+    "reviveGame": "Ressusciter le Jeu",
     "restart": "Recommencer",
     "share": "Partager",
     "mainMenu": "Menu Principal",
     "recommendations": "Essaie aussi",
-    "tapToStart": "👆 Tape pour Commencer"
+    "tapToStart": "👆 Appuie pour Commencer",
+    "floorValue": "{value}",
+    "perfectValue": "{value}",
+    "newBestRecord": "🎉 Nouveau Record !",
+    "shareText": "🏗️ J'ai atteint l'étage {floor} dans Stack Tower ! ({emoji} {title})\nScore : {score} | Parfaits : {perfect}\nEssaie !",
+    "copiedToClipboard": "Résultat copié dans le presse-papiers !",
+    "copyPrompt": "Copiez le résultat :",
+    "adLoading": "Chargement de la pub..."
   },
   "skins": {
     "title": "Thème de Bloc",
-    "back": "Retour"
+    "back": "Retour",
+    "unlockReq": "🔒 Atteindre l'étage {floor}",
+    "inUse": "✓ Utilisé"
   },
   "leaderboard": {
     "title": "Statistiques",
@@ -43,5 +52,51 @@
     "totalFloors": "Étages Totaux",
     "avgFloor": "Étage Moyen",
     "perfectTotal": "Nombre de Parfaits"
+  },
+  "themes": {
+    "classic": "Classique",
+    "neon": "Néon",
+    "space": "Espace",
+    "candy": "Bonbon",
+    "retro": "Rétro"
+  },
+  "titles": {
+    "1": "Débutant",
+    "5": "Constructeur Novice",
+    "10": "Apprenti Constructeur",
+    "15": "Constructeur Compétent",
+    "20": "Constructeur Expert",
+    "25": "Maître Constructeur",
+    "30": "Expert en Tours",
+    "40": "Gratte-ciel",
+    "50": "Bâtisseur de Hauteurs",
+    "60": "Conquérant des Nuages",
+    "70": "Maître du Ciel",
+    "80": "Architecte Spatial",
+    "90": "Bâtisseur Galactique",
+    "100": "Chef-d'œuvre",
+    "125": "Tour Légendaire",
+    "150": "Architecte Mythique",
+    "200": "Transcendeur Dimensionnel",
+    "250": "Maître de l'Espace-Temps",
+    "300": "L'Absolu",
+    "500": "Niveau Divin"
+  },
+  "specialTitles": {
+    "perfect_10": "Perfectionniste",
+    "perfect_30": "Dieu du Timing",
+    "veteran": "Vétéran",
+    "legend": "Légende"
+  },
+  "badges": {
+    "perfectStreakDesc": "{value} parfaits consécutifs",
+    "totalFloorsDesc": "Total de {value} étages",
+    "floorDesc": "Étage {value}"
+  },
+  "rec": {
+    "skyRunnerDesc": "Jeu arcade de vol spatial !",
+    "zigzagDesc": "Jeu arcade de changement de direction !",
+    "emojiMergeName": "Emoji Merge",
+    "emojiMergeDesc": "Fusionne des emojis pour les faire évoluer !"
   }
 }

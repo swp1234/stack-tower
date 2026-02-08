@@ -29,11 +29,20 @@
     "share": "Paylaş",
     "mainMenu": "Ana Menü",
     "recommendations": "Bunları da Dene",
-    "tapToStart": "👆 Başlamak için Tap Et"
+    "tapToStart": "👆 Başlamak için Dokun",
+    "floorValue": "{value}",
+    "perfectValue": "{value}",
+    "newBestRecord": "🎉 Yeni Rekor!",
+    "shareText": "🏗️ Stack Tower'da {floor}. kata ulaştım! ({emoji} {title})\nPuan: {score} | Mükemmel: {perfect}\nSen de dene!",
+    "copiedToClipboard": "Sonuç panoya kopyalandı!",
+    "copyPrompt": "Sonucu kopyalayın:",
+    "adLoading": "Reklam yükleniyor..."
   },
   "skins": {
     "title": "Blok Teması",
-    "back": "Geri"
+    "back": "Geri",
+    "unlockReq": "🔒 {floor}. kata ulaş",
+    "inUse": "✓ Kullanımda"
   },
   "leaderboard": {
     "title": "İstatistikler",
@@ -43,5 +52,51 @@
     "totalFloors": "Toplam Katlar",
     "avgFloor": "Ort. Kat",
     "perfectTotal": "Mükemmel Sayı"
+  },
+  "themes": {
+    "classic": "Klasik",
+    "neon": "Neon",
+    "space": "Uzay",
+    "candy": "Şeker",
+    "retro": "Retro"
+  },
+  "titles": {
+    "1": "Yığma Çaylağı",
+    "5": "Çaylak Mimar",
+    "10": "Çırak Mimar",
+    "15": "Yetenekli Mimar",
+    "20": "Uzman Mimar",
+    "25": "Usta Mimar",
+    "30": "Kule Uzmanı",
+    "40": "Gökdelen",
+    "50": "Yüksek Bina Ustası",
+    "60": "Bulut Fatihi",
+    "70": "Gökyüzü Hakimi",
+    "80": "Uzay Mimarı",
+    "90": "Galaksi Mimarı",
+    "100": "Başyapıt",
+    "125": "Efsanevi Kule",
+    "150": "Mitolojik Mimar",
+    "200": "Boyut Aşan",
+    "250": "Uzay-Zaman Hakimi",
+    "300": "Mutlak Güç",
+    "500": "İlahi Seviye"
+  },
+  "specialTitles": {
+    "perfect_10": "Mükemmeliyetçi",
+    "perfect_30": "Zamanlama Tanrısı",
+    "veteran": "Veteran",
+    "legend": "Efsane"
+  },
+  "badges": {
+    "perfectStreakDesc": "Üst üste {value} mükemmel",
+    "totalFloorsDesc": "Toplam {value} kat",
+    "floorDesc": "{value}. kat"
+  },
+  "rec": {
+    "skyRunnerDesc": "Uzay uçuşu arcade oyunu!",
+    "zigzagDesc": "Yön değiştirme arcade oyunu!",
+    "emojiMergeName": "Emoji Merge",
+    "emojiMergeDesc": "Emojileri birleştir ve evrimleştir!"
   }
 }
