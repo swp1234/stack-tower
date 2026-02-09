@@ -97,7 +97,9 @@
     "skyRunnerDesc": "Space flight arcade game!",
     "zigzagDesc": "Direction-switching arcade game!",
     "emojiMergeName": "Emoji Merge",
-    "emojiMergeDesc": "Merge emojis to evolve!"
+    "emojiMergeDesc": "Merge emojis to evolve!",
+    "colorMemoryName": "색상 기억력",
+    "colorMemoryDesc": "기억력 도전 게임"
   },
   "combo": {
     "3perfect": "🔥 3 Perfect Combo!",

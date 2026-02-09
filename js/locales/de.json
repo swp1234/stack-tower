@@ -97,6 +97,19 @@
     "skyRunnerDesc": "Weltraum-Flug Arcade-Spiel!",
     "zigzagDesc": "Richtungswechsel Arcade-Spiel!",
     "emojiMergeName": "Emoji Merge",
-    "emojiMergeDesc": "Emojis verschmelzen und weiterentwickeln!"
+    "emojiMergeDesc": "Emojis verschmelzen und weiterentwickeln!",
+    "colorMemoryName": "색상 기억력",
+    "colorMemoryDesc": "기억력 도전 게임"
+  },
+  "combo": {
+    "3perfect": "🔥 3연속 완벽!",
+    "5perfect": "⚡ 5연속 완벽!",
+    "10perfect": "💥 10연속 완벽!",
+    "broken": "콤보 끊김!"
+  },
+  "themes_unlock": {
+    "neon_50": "50점 달성! 네온 테마 해금",
+    "gold_100": "100점 달성! 골드 테마 해금",
+    "space_200": "200점 달성! 우주 테마 해금"
   }
 }
