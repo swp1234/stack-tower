@@ -1,50 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="192" height="192" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#3498db;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#2980b9;stop-opacity:1" />
+      <stop offset="0%" style="stop-color:#f39c12;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c27c0e;stop-opacity:1" />
     </linearGradient>
-    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#e74c3c;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#c0392b;stop-opacity:1" />
-    </linearGradient>
-    <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#2ecc71;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#27ae60;stop-opacity:1" />
-    </linearGradient>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-      <feMerge>
-        <feMergeNode in="coloredBlur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.3"/>
     </filter>
   </defs>
-
-  <!-- Background -->
-  <rect width="192" height="192" fill="#1a1a2e"/>
-
-  <!-- Stack Blocks -->
-  <!-- Bottom block (largest) -->
-  <rect x="30" y="130" width="132" height="20" fill="url(#grad1)" filter="url(#glow)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-
-  <!-- Middle block -->
-  <rect x="45" y="105" width="102" height="18" fill="url(#grad2)" filter="url(#glow)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-
-  <!-- Top block (smallest) -->
-  <rect x="60" y="82" width="72" height="16" fill="url(#grad3)" filter="url(#glow)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-
-  <!-- Accent blocks on sides (falling) -->
-  <rect x="20" y="70" width="12" height="14" fill="#f39c12" opacity="0.7" filter="url(#glow)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-  <rect x="160" y="75" width="12" height="14" fill="#9b59b6" opacity="0.7" filter="url(#glow)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-
-  <!-- Shine effect on top block -->
-  <rect x="60" y="82" width="72" height="4" fill="rgba(255,255,255,0.2)" filter="url(#glow)"/>
-
-  <!-- Target/Perfect zone indicator (arc) -->
-  <circle cx="96" cy="96" r="80" fill="none" stroke="rgba(52, 152, 219, 0.1)" stroke-width="2" stroke-dasharray="5,5"/>
-
-  <!-- Center indicator -->
-  <circle cx="96" cy="98" r="3" fill="#ffd700"/>
-  <circle cx="96" cy="98" r="6" fill="none" stroke="#ffd700" stroke-width="1"/>
+  <rect width="512" height="512" fill="url(#grad1)"/>
+  <g transform="translate(256, 256)" filter="url(#shadow)">
+    <circle cx="0" cy="0" r="200" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.25)" stroke-width="2"/>
+    <text x="0" y="0" font-size="180" text-anchor="middle" dominant-baseline="central" fill="white" font-family="system-ui, -apple-system, sans-serif" font-weight="bold" opacity="0.95">🏗</text>
+  </g>
+  <g transform="translate(256, 256)">
+    <circle cx="0" cy="0" r="220" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  </g>
 </svg>
