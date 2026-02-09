@@ -965,5 +965,36 @@ button,a[href],input[type="button"],input[type="submit"],[role="button"]{min-wid
 .skip-link:focus{top:0;}
 [role="dialog"]{z-index:1000;}
 @media (prefers-reduced-motion: reduce){*{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;scroll-behavior:auto !important;}}
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-dark, var(--bg-primary, var(--background, #0f0f23)));
+}
+
+::-webkit-scrollbar-thumb {
+    background: #f97316;
+    border-radius: 5px;
+    border: 2px solid var(--bg-dark, var(--bg-primary, var(--background, #0f0f23)));
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #fa8f44;
+    opacity: 0.8;
+}
+
+/* Selection Color */
+::selection {
+    background: #f97316;
+    color: white;
+}
+
+::-moz-selection {
+    background: #f97316;
+    color: white;
+}
+
 @media (prefers-contrast: more){button{border:2px solid #2ecc71;}}
 .rec-card:focus-visible{outline:3px solid #2ecc71;outline-offset:4px;}
