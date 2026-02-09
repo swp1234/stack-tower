@@ -250,9 +250,19 @@ class StackTowerGame {
     this.direction = this.stack.length % 2 === 0 ? 1 : -1;
     this.movingBlock.x = this.direction === 1 ? -this.movingBlock.w : this.W;
 
-    // Increase speed
-    const speedLevel = Math.floor(this.floor / 5);
-    this.speed = Math.min(this.baseSpeed + speedLevel * 0.3, 8);
+    // Improved difficulty curve: slower early game, gradual increase
+    // Floors 0-10: slow speed increase (baseSpeed + 0.1 * floor)
+    // Floors 10-25: moderate speed increase (baseSpeed + 0.5 + 0.2 * (floor - 10))
+    // Floors 25+: capped at max speed for sustainability
+    let newSpeed;
+    if (this.floor <= 10) {
+      newSpeed = this.baseSpeed + (this.floor * 0.1);
+    } else if (this.floor <= 25) {
+      newSpeed = this.baseSpeed + 0.5 + ((this.floor - 10) * 0.15);
+    } else {
+      newSpeed = Math.min(this.baseSpeed + 2.8, 7);
+    }
+    this.speed = newSpeed;
 
     // Update camera target
     if (this.stack.length > 6) {
