@@ -98,5 +98,16 @@
     "zigzagDesc": "Direction-switching arcade game!",
     "emojiMergeName": "Emoji Merge",
     "emojiMergeDesc": "Merge emojis to evolve!"
+  },
+  "combo": {
+    "3perfect": "🔥 3 Perfect Combo!",
+    "5perfect": "⚡ 5 Perfect Combo!",
+    "10perfect": "💥 10 Perfect Combo!",
+    "broken": "Combo Broken!"
+  },
+  "themes_unlock": {
+    "neon_50": "50 pts! Neon Theme Unlocked",
+    "gold_100": "100 pts! Gold Theme Unlocked",
+    "space_200": "200 pts! Space Theme Unlocked"
   }
 }

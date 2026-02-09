@@ -98,5 +98,16 @@
     "zigzagDesc": "方向切换街机游戏！",
     "emojiMergeName": "表情合并",
     "emojiMergeDesc": "合并表情进化！"
+  },
+  "combo": {
+    "3perfect": "🔥 3连完美！",
+    "5perfect": "⚡ 5连完美！",
+    "10perfect": "💥 10连完美！",
+    "broken": "连击断裂！"
+  },
+  "themes_unlock": {
+    "neon_50": "50分！霓虹主题解锁",
+    "gold_100": "100分！黄金主题解锁",
+    "space_200": "200分！宇宙主题解锁"
   }
 }
