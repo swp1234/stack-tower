@@ -41,6 +41,9 @@ class StackTowerGame {
     this.shakeAmount = 0;
     this.flashAlpha = 0;
 
+    // Leaderboard system
+    this.leaderboard = new LeaderboardManager('stack-tower', 10);
+
     // Dopamine enhancement effects
     this.effectBursts = [];
     this.floatingTexts = [];
@@ -489,6 +492,13 @@ class StackTowerGame {
     this.stats.maxFloor = Math.max(this.stats.maxFloor, this.floor);
     this.stats.maxScore = Math.max(this.stats.maxScore, this.score);
 
+    // Add score to leaderboard
+    const leaderboardResult = this.leaderboard.addScore(this.score, {
+      floor: this.floor,
+      perfectCount: this.perfectCount,
+      streak: this.perfectStreak
+    });
+
     this.checkThemeUnlocks();
     this.checkBadges();
     this.saveData();
@@ -499,11 +509,47 @@ class StackTowerGame {
       this.updateScreen();
       this.updateGameOverUI(isNewBest);
 
+      // Display leaderboard
+      this.displayGameOverLeaderboard(leaderboardResult);
+
       // Interstitial ad every 3 games
       if (this.playCount % 3 === 0) {
         this.showInterstitialAd();
       }
     }, 800);
+  }
+
+  displayGameOverLeaderboard(leaderboardResult) {
+    const gameOverScreen = document.getElementById('gameOverScreen');
+    if (!gameOverScreen) return;
+
+    let leaderboardContainer = gameOverScreen.querySelector('.leaderboard-section');
+    if (!leaderboardContainer) {
+      leaderboardContainer = document.createElement('div');
+      leaderboardContainer.className = 'leaderboard-section';
+      gameOverScreen.appendChild(leaderboardContainer);
+    }
+
+    const topScores = this.leaderboard.getTopScores(5);
+    let html = '<div class="leaderboard-title">🏆 Top 5 Scores</div>';
+    html += '<div class="leaderboard-list">';
+
+    topScores.forEach((entry, index) => {
+      const medals = ['🥇', '🥈', '🥉', '4️⃣', '5️⃣'];
+      const isCurrentScore = entry.score === this.score && leaderboardResult.isNewRecord;
+      const classes = isCurrentScore ? 'leaderboard-item highlight' : 'leaderboard-item';
+
+      html += `
+        <div class="${classes}">
+          <span class="medal">${medals[index] || (index + 1) + '.'}</span>
+          <span class="score-value">${entry.score}</span>
+          <span class="score-date">${entry.date}</span>
+        </div>
+      `;
+    });
+
+    html += '</div>';
+    leaderboardContainer.innerHTML = html;
   }
 
   reviveGame() {
