@@ -3,9 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3600813755953882" crossorigin="anonymous"></script>
     <meta name="robots" content="max-image-preview:large">
     <meta name="theme-color" content="#f39c12">
+
+    <!-- Preconnect to external services for performance -->
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+
+    <!-- AdSense Script (loaded once in head) -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3600813755953882" crossorigin="anonymous"></script>
     <title>Stack Tower 🏗️ - 타이밍 아케이드 게임</title>
     <meta name="description" content="좌우 왕복하는 블록을 정확한 타이밍에 떨어뜨려 탑을 쌓는 타이밍 아케이드 게임입니다. 🏗️ 얼마나 높이 쌓을 수 있을까?">
     <meta name="keywords" content="스택 게임, 타이밍 게임, 아케이드 게임, 블록 게임, 무료 게임, 브라우저 게임, 캐주얼 게임, 반응속도">
@@ -352,13 +359,13 @@
         </a>
     </footer>
 
-    <script src="../_common/storage-manager.js"></script>
-    <script src="../_common/leaderboard-manager.js"></script>
-    <script src="js/i18n.js"></script>
-    <script src="js/game-data.js"></script>
-    <script src="js/sound-engine.js"></script>
-    <script src="js/dopamine-effects.js"></script>
-    <script src="js/app.js"></script>
+    <script defer src="../_common/storage-manager.js"></script>
+    <script defer src="../_common/leaderboard-manager.js"></script>
+    <script defer src="js/i18n.js"></script>
+    <script defer src="js/game-data.js"></script>
+    <script defer src="js/sound-engine.js"></script>
+    <script defer src="js/dopamine-effects.js"></script>
+    <script defer src="js/app.js"></script>
     <script>
         // Initialize i18n and load translations
         async function initI18n() {
