@@ -97,7 +97,9 @@
     "skyRunnerDesc": "우주 비행 아케이드 게임!",
     "zigzagDesc": "방향 전환 아케이드 게임!",
     "emojiMergeName": "이모지 머지",
-    "emojiMergeDesc": "이모지 합쳐 진화시키기!"
+    "emojiMergeDesc": "이모지 합쳐 진화시키기!",
+    "colorMemoryName": "색상 기억력",
+    "colorMemoryDesc": "기억력 도전 게임"
   },
   "combo": {
     "3perfect": "🔥 3연속 완벽!",
