@@ -419,20 +419,20 @@ class StackTowerGame {
 
     // Milestone bonuses (Floor 10, 20, 30, etc.)
     if (this.floor % 10 === 0) {
-      let bonusScore = 100;
+      let bonusScore = 150;
       let bannerText = `FLOOR ${this.floor}!`;
 
       if (this.floor === 10) {
-        bonusScore = 100;
+        bonusScore = 200;  // IMPROVED: was 100
         bannerText = 'FLOOR 10 ACHIEVED!';
       } else if (this.floor === 20) {
-        bonusScore = 200;
+        bonusScore = 400;  // IMPROVED: was 200
         bannerText = 'FLOOR 20 ACHIEVED!';
       } else if (this.floor === 30) {
-        bonusScore = 300;
+        bonusScore = 600;  // IMPROVED: was 300
         bannerText = 'FLOOR 30 ACHIEVED!';
       } else if (this.floor % 20 === 0) {
-        bonusScore = 200;
+        bonusScore = 400;  // IMPROVED: was 200
       }
 
       this.score += bonusScore;
@@ -442,10 +442,13 @@ class StackTowerGame {
       if (this.floor % 10 === 0) {
         const centerX = this.W / 2;
         const centerY = this.H * 0.35;
-        this.effectBursts.push(new ParticleBurst(centerX, centerY, 'confetti', '#FFD700'));
-        this.effectBursts.push(new ParticleBurst(centerX - 50, centerY, 'confetti', '#FF6600'));
-        this.effectBursts.push(new ParticleBurst(centerX + 50, centerY, 'confetti', '#FFD700'));
-        this.shakeAmount = 15;
+        // IMPROVED: More intense effects for milestone floors
+        for (let i = 0; i < 2; i++) {
+          this.effectBursts.push(new ParticleBurst(centerX, centerY, 'confetti', '#FFD700'));
+          this.effectBursts.push(new ParticleBurst(centerX - 50, centerY, 'confetti', '#FF6600'));
+          this.effectBursts.push(new ParticleBurst(centerX + 50, centerY, 'confetti', '#FFD700'));
+        }
+        this.shakeAmount = 20;  // IMPROVED: was 15
       }
     }
 
