@@ -257,6 +257,13 @@ class StackTowerGame {
     }
   }
 
+  // Get Perfect condition threshold based on floor
+  getPerfectThreshold() {
+    if (this.floor <= 5) return 8;   // Easy (offset <= 8px)
+    if (this.floor <= 15) return 6;  // Medium (offset <= 6px)
+    return 5;                         // Hard (offset <= 5px)
+  }
+
   dropBlock() {
     if (!this.movingBlock || !this.movingBlock.moving) return;
     this.movingBlock.moving = false;
@@ -280,9 +287,10 @@ class StackTowerGame {
     }
 
     const offset = Math.abs((curr.x + curr.w / 2) - (prev.x + prev.w / 2));
+    const perfectThreshold = this.getPerfectThreshold();
 
-    // Perfect check
-    if (offset <= 5) {
+    // Perfect check (dynamic threshold based on floor)
+    if (offset <= perfectThreshold) {
       // PERFECT - snap to previous block position
       curr.x = prev.x;
       curr.w = prev.w;
@@ -344,7 +352,8 @@ class StackTowerGame {
       this.combo = 0;
       this.perfectStreak = 0;
 
-      // Create falling trimmed piece
+      // Create falling trimmed piece (with width protection)
+      const originalW = curr.w;
       if (curr.x < prev.x) {
         // Excess on the left
         const excessW = prev.x - curr.x;
@@ -369,12 +378,32 @@ class StackTowerGame {
         curr.w = overlapW;
       }
 
-      if (offset <= 15) {
+      // Apply 50% width reduction cap
+      const minWidth = Math.max(40, originalW * 0.5);
+      if (curr.w < minWidth) {
+        const diff = minWidth - curr.w;
+        curr.w = minWidth;
+        // Adjust x to keep block centered
+        curr.x -= diff / 2;
+        if (curr.x < 0) curr.x = 0;
+        if (curr.x + curr.w > this.W) curr.x = this.W - curr.w;
+      }
+
+      // Dynamic Perfect condition feedback
+      if (offset <= 10) {
+        // NICE - offset within 10px
+        this.showFeedback('NICE', '#3498db');
+        this.effectBursts.push(new ParticleBurst(curr.x + curr.w / 2, curr.y, 'sparkle', '#3498db'));
+        this.score += 20;
+      } else if (offset <= 20) {
+        // GOOD - offset within 20px
         this.showFeedback('GOOD', '#f39c12');
         this.effectBursts.push(new ParticleBurst(curr.x + curr.w / 2, curr.y, 'sparkle', '#f39c12'));
+        this.score += 30;
       } else {
-        // Small shake for okay placement
+        // Small shake for poor placement
         this.shakeAmount = 3;
+        this.score += 10;
       }
 
       // Combo break effect
@@ -382,20 +411,46 @@ class StackTowerGame {
         this.shakeAmount = 5;
         this.floatingTexts.push(new FloatingText('-Combo', curr.x + curr.w / 2, curr.y - 30, '#FF6666'));
       }
-
-      this.score += 10;
     }
 
-    // Floor bonus every 10 floors
+    // Floor bonus every 10 floors with milestone banner
     this.floor++;
     this.stats.totalFloors++;
+
+    // Milestone bonuses (Floor 10, 20, 30, etc.)
     if (this.floor % 10 === 0) {
-      this.score += 100;
-      this.showFeedback(`+100 BONUS`, '#ffd700');
+      let bonusScore = 100;
+      let bannerText = `FLOOR ${this.floor}!`;
+
+      if (this.floor === 10) {
+        bonusScore = 100;
+        bannerText = 'FLOOR 10 ACHIEVED!';
+      } else if (this.floor === 20) {
+        bonusScore = 200;
+        bannerText = 'FLOOR 20 ACHIEVED!';
+      } else if (this.floor === 30) {
+        bonusScore = 300;
+        bannerText = 'FLOOR 30 ACHIEVED!';
+      } else if (this.floor % 20 === 0) {
+        bonusScore = 200;
+      }
+
+      this.score += bonusScore;
+      this.showFeedback(`+${bonusScore} ${bannerText}`, '#ffd700');
+
+      // Extra effects for milestones
+      if (this.floor % 10 === 0) {
+        const centerX = this.W / 2;
+        const centerY = this.H * 0.35;
+        this.effectBursts.push(new ParticleBurst(centerX, centerY, 'confetti', '#FFD700'));
+        this.effectBursts.push(new ParticleBurst(centerX - 50, centerY, 'confetti', '#FF6600'));
+        this.effectBursts.push(new ParticleBurst(centerX + 50, centerY, 'confetti', '#FFD700'));
+        this.shakeAmount = 15;
+      }
     }
 
-    // Check min width
-    if (curr.w < 12) {
+    // Check min width (40px minimum)
+    if (curr.w < 40) {
       this.stack.push(curr);
       this.movingBlock = null;
       this.triggerGameOver();
