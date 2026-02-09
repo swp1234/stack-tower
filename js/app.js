@@ -41,6 +41,11 @@ class StackTowerGame {
     this.shakeAmount = 0;
     this.flashAlpha = 0;
 
+    // Dopamine enhancement effects
+    this.effectBursts = [];
+    this.floatingTexts = [];
+    this.screenFlash = null;
+
     // Power-ups
     this.reviveUsed = false;
     this.slowActive = false;
@@ -175,6 +180,9 @@ class StackTowerGame {
     this.fallingPiece = null;
     this.particles = [];
     this.feedbackText = null;
+    this.effectBursts = [];
+    this.floatingTexts = [];
+    this.screenFlash = null;
     this.initBgParticles();
     this.cameraY = 0;
     this.targetCameraY = 0;
@@ -285,11 +293,25 @@ class StackTowerGame {
       this.score += 50 + this.combo * 10;
 
       if (window.sfx) window.sfx.perfect();
-      this.spawnParticles(curr.x + curr.w / 2, curr.y + curr.h / 2, '#2ecc71', 30);
+
+      // Enhanced dopamine effects for perfect placement
+      const centerX = curr.x + curr.w / 2;
+      const centerY = curr.y + curr.h / 2;
+
+      // Multiple particle bursts
+      this.spawnParticles(centerX, centerY, '#2ecc71', 30);
+      this.effectBursts.push(new ParticleBurst(centerX, centerY, 'sparkle', '#00FF88'));
+      this.effectBursts.push(new ParticleBurst(centerX, centerY, 'gold', '#FFD700'));
+
       this.showFeedback('PERFECT!', '#2ecc71');
-      this.shakeAmount = 8;
-      this.flashAlpha = 0.25;
-      curr.whiteBorderFlash = 0.4;
+
+      // Stronger screen shake on perfect
+      this.shakeAmount = 12;
+      this.flashAlpha = 0.35;
+      curr.whiteBorderFlash = 0.5;
+
+      // Screen edge flash effect
+      this.screenFlash = new ScreenFlash('rgba(46,204,113,0.3)', 0.3);
 
       // Grow block slightly on consecutive perfects
       if (this.combo >= 3) {
@@ -302,9 +324,23 @@ class StackTowerGame {
         curr.w = newW;
         if (curr.x < 0) { curr.x = 0; }
         if (curr.x + curr.w > this.W) { curr.x = this.W - curr.w; }
+
+        // Combo milestone effects
+        if (this.combo === 5) {
+          this.floatingTexts.push(new FloatingText('COMBO x5!', centerX, centerY - 40, '#FFD700'));
+          this.effectBursts.push(new ParticleBurst(centerX, centerY, 'confetti', '#FFD700'));
+          this.shakeAmount = 15;
+        } else if (this.combo === 10) {
+          this.floatingTexts.push(new FloatingText('COMBO x10!', centerX, centerY - 40, '#FF6600'));
+          for (let i = 0; i < 2; i++) {
+            this.effectBursts.push(new ParticleBurst(centerX + (i-0.5)*40, centerY, 'gold'));
+          }
+          this.shakeAmount = 20;
+        }
       }
     } else {
       // Trim the block
+      const wasCombo = this.combo > 0;
       this.combo = 0;
       this.perfectStreak = 0;
 
@@ -335,6 +371,16 @@ class StackTowerGame {
 
       if (offset <= 15) {
         this.showFeedback('GOOD', '#f39c12');
+        this.effectBursts.push(new ParticleBurst(curr.x + curr.w / 2, curr.y, 'sparkle', '#f39c12'));
+      } else {
+        // Small shake for okay placement
+        this.shakeAmount = 3;
+      }
+
+      // Combo break effect
+      if (wasCombo) {
+        this.shakeAmount = 5;
+        this.floatingTexts.push(new FloatingText('-Combo', curr.x + curr.w / 2, curr.y - 30, '#FF6666'));
       }
 
       this.score += 10;
@@ -493,6 +539,8 @@ class StackTowerGame {
       // Only update particles
       this.updateParticles(dt);
       this.updateBgParticles(dt);
+      // Update dopamine effects
+      this.updateDopamineEffects(dt);
       return;
     }
 
@@ -562,6 +610,7 @@ class StackTowerGame {
 
     this.updateParticles(dt);
     this.updateBgParticles(dt);
+    this.updateDopamineEffects(dt);
   }
 
   updateParticles(dt) {
@@ -573,6 +622,32 @@ class StackTowerGame {
       p.life -= dt;
       if (p.life <= 0) {
         this.particles.splice(i, 1);
+      }
+    }
+  }
+
+  updateDopamineEffects(dt) {
+    // Update effect bursts
+    for (let i = this.effectBursts.length - 1; i >= 0; i--) {
+      this.effectBursts[i].update(dt);
+      if (this.effectBursts[i].isDone()) {
+        this.effectBursts.splice(i, 1);
+      }
+    }
+
+    // Update floating texts
+    for (let i = this.floatingTexts.length - 1; i >= 0; i--) {
+      this.floatingTexts[i].update(dt);
+      if (this.floatingTexts[i].isDone()) {
+        this.floatingTexts.splice(i, 1);
+      }
+    }
+
+    // Update screen flash
+    if (this.screenFlash) {
+      this.screenFlash.update(dt);
+      if (this.screenFlash.isDone()) {
+        this.screenFlash = null;
       }
     }
   }
@@ -720,6 +795,21 @@ class StackTowerGame {
     if (this.flashAlpha > 0) {
       ctx.fillStyle = `rgba(46, 204, 113, ${this.flashAlpha})`;
       ctx.fillRect(0, 0, W, H);
+    }
+
+    // Render dopamine effect bursts (screen-space, not camera)
+    this.effectBursts.forEach(burst => {
+      burst.draw(ctx, this.scale, this.offsetX, this.offsetY);
+    });
+
+    // Render floating texts (screen-space)
+    this.floatingTexts.forEach(text => {
+      text.draw(ctx, this.scale, this.offsetX, this.offsetY);
+    });
+
+    // Render screen flash
+    if (this.screenFlash) {
+      this.screenFlash.draw(ctx, this.canvas.width, this.canvas.height);
     }
 
     // Slow motion indicator
