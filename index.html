@@ -339,8 +339,12 @@
     <script>
         // Initialize i18n and load translations
         async function initI18n() {
-            await i18n.loadTranslations(i18n.currentLang);
-            i18n.updateUI();
+            try {
+                await i18n.loadTranslations(i18n.currentLang);
+                i18n.updateUI();
+            } catch (e) {
+                console.warn('i18n init failed:', e);
+            }
 
             // Language selector event listeners
             const langBtn = document.getElementById('langBtn');
