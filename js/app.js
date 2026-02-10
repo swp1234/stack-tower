@@ -1457,6 +1457,13 @@ class StackTowerGame {
 // Initialize
 const game = new StackTowerGame();
 
+// Hide app loader
+const appLoader = document.getElementById('app-loader');
+if (appLoader) {
+    appLoader.classList.add('hidden');
+    setTimeout(() => appLoader.remove(), 300);
+}
+
 // Service Worker
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js').catch(() => {});
