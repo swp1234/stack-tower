@@ -538,6 +538,16 @@ class StackTowerGame {
     // Report score to daily streak system
     if (typeof DailyStreak !== 'undefined') DailyStreak.report(this.score);
 
+    // Report achievements
+    if (typeof GameAchievements !== 'undefined') {
+      GameAchievements.report({
+        maxFloor: this.stats.maxFloor,
+        totalGames: this.stats.totalGames,
+        totalPerfects: this.stats.totalPerfects,
+        bestStreak: this.stats.bestStreak
+      });
+    }
+
     this.checkThemeUnlocks();
     this.checkBadges();
     this.saveData();
@@ -1486,6 +1496,23 @@ class StackTowerGame {
 // Initialize
 const game = new StackTowerGame();
 DailyStreak.init({ gameId: 'stack-tower', bestScoreKey: 'stack-tower-best-score', minTarget: 3 });
+
+if (typeof GameAchievements !== 'undefined') {
+  GameAchievements.init({
+    gameId: 'stack-tower',
+    defs: [
+      { id: 'floor_10', stat: 'maxFloor', target: 10, icon: '\uD83C\uDFD7\uFE0F', name: 'Builder' },
+      { id: 'floor_30', stat: 'maxFloor', target: 30, icon: '\uD83C\uDFD7\uFE0F', name: 'Architect' },
+      { id: 'floor_50', stat: 'maxFloor', target: 50, icon: '\uD83C\uDFD7\uFE0F', name: 'Skyscraper' },
+      { id: 'games_10', stat: 'totalGames', target: 10, icon: '\uD83C\uDFAE', name: 'Regular Builder' },
+      { id: 'games_50', stat: 'totalGames', target: 50, icon: '\uD83C\uDFAE', name: 'Master Builder' },
+      { id: 'perfect_10', stat: 'totalPerfects', target: 10, icon: '\u2B50', name: 'Precision' },
+      { id: 'perfect_50', stat: 'totalPerfects', target: 50, icon: '\u2B50', name: 'Perfect Machine' },
+      { id: 'streak_5', stat: 'bestStreak', target: 5, icon: '\uD83D\uDD25', name: 'Streak Starter' },
+      { id: 'streak_15', stat: 'bestStreak', target: 15, icon: '\uD83D\uDD25', name: 'On Fire' },
+    ]
+  });
+}
 
 // Hide app loader
 const appLoader = document.getElementById('app-loader');
