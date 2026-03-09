@@ -554,16 +554,19 @@ class StackTowerGame {
 
     // Show game over after delay
     setTimeout(() => {
-      this.screen = 'gameOver';
-      this.updateScreen();
-      this.updateGameOverUI(isNewBest);
+      const showGameOverScreen = () => {
+        this.screen = 'gameOver';
+        this.updateScreen();
+        this.updateGameOverUI(isNewBest);
 
-      // Display leaderboard
-      this.displayGameOverLeaderboard(leaderboardResult);
+        // Display leaderboard
+        this.displayGameOverLeaderboard(leaderboardResult);
+      };
 
-      // Interstitial ad every 3 games
-      if (this.playCount % 3 === 0) {
-        this.showInterstitialAd();
+      if (typeof GameAds !== 'undefined') {
+        GameAds.showInterstitial({ onComplete: () => showGameOverScreen() });
+      } else {
+        showGameOverScreen();
       }
     }, 800);
   }
@@ -1495,6 +1498,7 @@ class StackTowerGame {
 
 // Initialize
 const game = new StackTowerGame();
+if (typeof GameAds !== 'undefined') GameAds.init();
 DailyStreak.init({ gameId: 'stack-tower', bestScoreKey: 'stack-tower-best-score', minTarget: 3 });
 
 if (typeof GameAchievements !== 'undefined') {
