@@ -526,6 +526,15 @@ class StackTowerGame {
       streak: this.perfectStreak
     });
 
+    // Save best score to dedicated localStorage key
+    const prevBest = parseInt(localStorage.getItem('stack-tower-best-score')) || 0;
+    if (this.score > prevBest) {
+      localStorage.setItem('stack-tower-best-score', this.score);
+    }
+
+    // Report score to daily streak system
+    if (typeof DailyStreak !== 'undefined') DailyStreak.report(this.score);
+
     this.checkThemeUnlocks();
     this.checkBadges();
     this.saveData();
@@ -1473,6 +1482,7 @@ class StackTowerGame {
 
 // Initialize
 const game = new StackTowerGame();
+DailyStreak.init({ gameId: 'stack-tower', bestScoreKey: 'stack-tower-best-score', minTarget: 3 });
 
 // Hide app loader
 const appLoader = document.getElementById('app-loader');
