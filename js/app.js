@@ -331,6 +331,7 @@ class StackTowerGame {
       this.score += 50 + this.combo * 10;
 
       if (window.sfx) window.sfx.perfect();
+      if (typeof Haptic !== 'undefined') Haptic.success();
 
       // Enhanced dopamine effects for perfect placement
       const centerX = curr.x + curr.w / 2;
@@ -491,6 +492,7 @@ class StackTowerGame {
     }
 
     // Land the block
+    if (typeof Haptic !== 'undefined') Haptic.light();
     this.stack.push(curr);
     this.movingBlock = null;
 
@@ -511,6 +513,7 @@ class StackTowerGame {
     this.state = 'gameover';
     this.playCount++;
     if (window.sfx) window.sfx.gameOver();
+    if (typeof Haptic !== 'undefined') Haptic.heavy();
     this.stats.totalGames++;
     this.stats.totalPerfects += this.perfectCount;
     this.stats.bestStreak = Math.max(this.stats.bestStreak, this.bestStreak);
