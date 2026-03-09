@@ -608,8 +608,7 @@ class StackTowerGame {
     if (this.reviveUsed) return;
     this.reviveUsed = true;
 
-    // Show ad first
-    this.showInterstitialAd(() => {
+    const doRevive = () => {
       // Restore last block width
       if (this.stack.length > 0) {
         const last = this.stack[this.stack.length - 1];
@@ -621,7 +620,16 @@ class StackTowerGame {
       this.updateScreen();
       this.spawnMovingBlock();
       this.updateHUD();
-    });
+    };
+
+    if (typeof GameAds !== 'undefined') {
+      GameAds.showRewarded({
+        onReward: () => doRevive(),
+        onSkip: () => { this.reviveUsed = false; }
+      });
+    } else {
+      doRevive(); // fallback
+    }
   }
 
   // === POWER-UPS ===
