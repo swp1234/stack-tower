@@ -1,11 +1,12 @@
 // Stack Tower - Service Worker
 // Progressive Web App (PWA) - Offline Support
 
-const CACHE_NAME = 'stack-tower-v3';
+const CACHE_NAME = 'stack-tower-v4';
 const urlsToCache = [
   '/',
   '/index.html',
   '/css/style.css',
+  '/assets/bg-opt.jpg',
   '/js/app.js',
   '/js/game-data.js',
   '/js/i18n.js',
