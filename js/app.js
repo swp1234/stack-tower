@@ -93,6 +93,13 @@ class StackTowerGame {
     // Badges
     this.unlockedBadges = [];
 
+    // Preload background image
+    this.bgImage = null;
+    this.bgImageReady = false;
+    const bgImg = new Image();
+    bgImg.onload = () => { this.bgImage = bgImg; this.bgImageReady = true; };
+    bgImg.src = 'assets/bg-opt.jpg';
+
     this.loadData();
     this.setupCanvas();
     this.setupEvents();
@@ -838,12 +845,16 @@ class StackTowerGame {
 
     const theme = this.getTheme();
 
-    // Background gradient
-    const bgGrad = ctx.createLinearGradient(0, 0, 0, H);
-    bgGrad.addColorStop(0, theme.backgroundGradient ? theme.backgroundGradient[0] : theme.background);
-    bgGrad.addColorStop(1, theme.backgroundGradient ? theme.backgroundGradient[1] : theme.background);
-    ctx.fillStyle = bgGrad;
-    ctx.fillRect(0, 0, W, H);
+    // Background: image or fallback gradient
+    if (this.bgImageReady) {
+      ctx.drawImage(this.bgImage, 0, 0, W, H);
+    } else {
+      const bgGrad = ctx.createLinearGradient(0, 0, 0, H);
+      bgGrad.addColorStop(0, theme.backgroundGradient ? theme.backgroundGradient[0] : theme.background);
+      bgGrad.addColorStop(1, theme.backgroundGradient ? theme.backgroundGradient[1] : theme.background);
+      ctx.fillStyle = bgGrad;
+      ctx.fillRect(0, 0, W, H);
+    }
 
     // Stars for space theme
     if (theme.stars) {
