@@ -423,5 +423,10 @@
     </style>
     <script src="/portal/js/cross-promo.js" defer></script>
     <script src="/portal/js/pwa-install.js" defer></script>
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js').catch(() => {});
+}
+</script>
 </body>
 </html>
