@@ -1507,7 +1507,7 @@ class StackTowerGame {
 // Initialize
 const game = new StackTowerGame();
 if (typeof GameAds !== 'undefined') GameAds.init();
-DailyStreak.init({ gameId: 'stack-tower', bestScoreKey: 'stack-tower-best-score', minTarget: 3 });
+if (typeof DailyStreak !== 'undefined') DailyStreak.init({ gameId: 'stack-tower', bestScoreKey: 'stack-tower-best-score', minTarget: 3 });
 
 if (typeof GameAchievements !== 'undefined') {
   GameAchievements.init({
