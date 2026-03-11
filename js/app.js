@@ -878,9 +878,22 @@ class StackTowerGame {
     ctx.save();
     ctx.translate(0, this.cameraY);
 
-    // Render stacked blocks
+    // Render stacked blocks with tower sway
+    const towerHeight = this.stack.length;
+    const swayTime = Date.now() * 0.001;
     for (let i = 0; i < this.stack.length; i++) {
-      this.renderBlock(ctx, this.stack[i], theme, i);
+      // Tower sway: higher blocks sway more, based on height ratio
+      if (towerHeight > 8 && i > 0) {
+        const heightRatio = i / towerHeight;
+        const swayAmplitude = Math.min(heightRatio * towerHeight * 0.12, 4);
+        const swayOffset = Math.sin(swayTime * 1.2 + i * 0.05) * swayAmplitude;
+        ctx.save();
+        ctx.translate(swayOffset, 0);
+        this.renderBlock(ctx, this.stack[i], theme, i);
+        ctx.restore();
+      } else {
+        this.renderBlock(ctx, this.stack[i], theme, i);
+      }
     }
 
     // Render moving block
@@ -985,6 +998,40 @@ class StackTowerGame {
     // Render screen flash
     if (this.screenFlash) {
       this.screenFlash.draw(ctx, this.canvas.width, this.canvas.height);
+    }
+
+    // Floor height indicator (right side)
+    if (this.floor > 0 && (this.state === 'playing' || this.state === 'falling')) {
+      const barX = W - 20;
+      const barH = H * 0.6;
+      const barY = H * 0.15;
+      const maxFloor = Math.max(this.floor, 30);
+      const fillRatio = Math.min(1, this.floor / maxFloor);
+
+      // Bar background
+      ctx.fillStyle = 'rgba(255,255,255,0.05)';
+      ctx.fillRect(barX - 3, barY, 6, barH);
+
+      // Filled portion (gradient from green to gold)
+      const barGrad = ctx.createLinearGradient(barX, barY + barH, barX, barY + barH * (1 - fillRatio));
+      barGrad.addColorStop(0, '#2ecc71');
+      barGrad.addColorStop(0.5, '#f1c40f');
+      barGrad.addColorStop(1, '#e74c3c');
+      ctx.fillStyle = barGrad;
+      ctx.fillRect(barX - 3, barY + barH * (1 - fillRatio), 6, barH * fillRatio);
+
+      // Floor number
+      ctx.fillStyle = 'rgba(255,255,255,0.6)';
+      ctx.font = 'bold 10px -apple-system, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(this.floor, barX, barY + barH * (1 - fillRatio) - 6);
+
+      // Milestone markers
+      for (let m = 10; m <= maxFloor; m += 10) {
+        const mY = barY + barH * (1 - m / maxFloor);
+        ctx.fillStyle = m <= this.floor ? 'rgba(241,196,15,0.6)' : 'rgba(255,255,255,0.15)';
+        ctx.fillRect(barX - 6, mY - 1, 12, 2);
+      }
     }
 
     // Slow motion indicator

@@ -1,7 +1,7 @@
 // Stack Tower - Service Worker
 // Progressive Web App (PWA) - Offline Support
 
-const CACHE_NAME = 'stack-tower-v4';
+const CACHE_NAME = 'stack-tower-v5';
 const urlsToCache = [
   '/',
   '/index.html',
