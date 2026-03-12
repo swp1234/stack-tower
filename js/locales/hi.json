@@ -36,7 +36,12 @@
     "shareText": "🏗️ Stack Tower में मंजिल {floor} तक पहुंचा! ({emoji} {title})\nस्कोर: {score} | परफेक्ट: {perfect}\nआजमाएं!",
     "copiedToClipboard": "परिणाम क्लिपबोर्ड पर कॉपी किया गया!",
     "copyPrompt": "परिणाम कॉपी करें:",
-    "adLoading": "विज्ञापन लोड हो रहा है..."
+    "adLoading": "विज्ञापन लोड हो रहा है...",
+    "comboLabel": "COMBO",
+    "slowLabel": "SLOW",
+    "floorBanner": "मंजिल {floor}!",
+    "floorAchieved": "मंजिल {floor} हासिल!",
+    "comboBreak": "-Combo"
   },
   "skins": {
     "title": "ब्लॉक थीम",
@@ -98,19 +103,26 @@
     "zigzagDesc": "दिशा बदलने वाला आर्केड गेम!",
     "emojiMergeName": "Emoji Merge",
     "emojiMergeDesc": "इमोजी मिलाकर विकसित करें!",
-    "colorMemoryName": "색상 기억력",
-    "colorMemoryDesc": "기억력 도전 게임"
+    "colorMemoryName": "रंग स्मृति",
+    "colorMemoryDesc": "स्मृति चुनौती खेल"
+  },
+  "themeDesc": {
+    "classic": "डिफ़ॉल्ट ब्लॉक थीम",
+    "neon": "मंजिल 10 पर अनलॉक",
+    "space": "मंजिल 30 पर अनलॉक",
+    "candy": "मंजिल 50 पर अनलॉक",
+    "retro": "मंजिल 100 पर अनलॉक"
   },
   "combo": {
-    "3perfect": "🔥 3연속 완벽!",
-    "5perfect": "⚡ 5연속 완벽!",
-    "10perfect": "💥 10연속 완벽!",
-    "broken": "콤보 끊김!"
+    "3perfect": "🔥 3 लगातार परफेक्ट!",
+    "5perfect": "⚡ 5 लगातार परफेक्ट!",
+    "10perfect": "💥 10 लगातार परफेक्ट!",
+    "broken": "कॉम्बो टूट गया!"
   },
   "themes_unlock": {
-    "neon_50": "50점 달성! 네온 테마 해금",
-    "gold_100": "100점 달성! 골드 테마 해금",
-    "space_200": "200점 달성! 우주 테마 해금"
+    "neon_50": "50 अंक! नियॉन थीम अनलॉक",
+    "gold_100": "100 अंक! गोल्ड थीम अनलॉक",
+    "space_200": "200 अंक! अंतरिक्ष थीम अनलॉक"
   },
   "error": {
     "storage": "प्राइवेट मोड में कुछ सुविधाएं सीमित हो सकती हैं।",

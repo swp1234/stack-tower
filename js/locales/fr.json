@@ -36,7 +36,12 @@
     "shareText": "🏗️ J'ai atteint l'étage {floor} dans Stack Tower ! ({emoji} {title})\nScore : {score} | Parfaits : {perfect}\nEssaie !",
     "copiedToClipboard": "Résultat copié dans le presse-papiers !",
     "copyPrompt": "Copiez le résultat :",
-    "adLoading": "Chargement de la pub..."
+    "adLoading": "Chargement de la pub...",
+    "comboLabel": "COMBO",
+    "slowLabel": "RALENTI",
+    "floorBanner": "ETAGE {floor} !",
+    "floorAchieved": "ETAGE {floor} ATTEINT !",
+    "comboBreak": "-Combo"
   },
   "skins": {
     "title": "Thème de Bloc",
@@ -98,19 +103,26 @@
     "zigzagDesc": "Jeu arcade de changement de direction !",
     "emojiMergeName": "Emoji Merge",
     "emojiMergeDesc": "Fusionne des emojis pour les faire évoluer !",
-    "colorMemoryName": "색상 기억력",
-    "colorMemoryDesc": "기억력 도전 게임"
+    "colorMemoryName": "Memoire des Couleurs",
+    "colorMemoryDesc": "Jeu de defi de memoire"
+  },
+  "themeDesc": {
+    "classic": "Theme de blocs par defaut",
+    "neon": "Debloquer a l'etage 10",
+    "space": "Debloquer a l'etage 30",
+    "candy": "Debloquer a l'etage 50",
+    "retro": "Debloquer a l'etage 100"
   },
   "combo": {
-    "3perfect": "🔥 3연속 완벽!",
-    "5perfect": "⚡ 5연속 완벽!",
-    "10perfect": "💥 10연속 완벽!",
-    "broken": "콤보 끊김!"
+    "3perfect": "🔥 3 parfaits consecutifs !",
+    "5perfect": "⚡ 5 parfaits consecutifs !",
+    "10perfect": "💥 10 parfaits consecutifs !",
+    "broken": "Combo brise !"
   },
   "themes_unlock": {
-    "neon_50": "50점 달성! 네온 테마 해금",
-    "gold_100": "100점 달성! 골드 테마 해금",
-    "space_200": "200점 달성! 우주 테마 해금"
+    "neon_50": "50 pts ! Theme Neon debloque",
+    "gold_100": "100 pts ! Theme Or debloque",
+    "space_200": "200 pts ! Theme Espace debloque"
   },
   "error": {
     "storage": "Certaines fonctions peuvent être limitées en mode privé.",

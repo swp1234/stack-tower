@@ -36,7 +36,12 @@
     "shareText": "🏗️ Stack Towerで{floor}階達成！({emoji} {title})\nスコア: {score} | パーフェクト: {perfect}回\n挑戦してみよう！",
     "copiedToClipboard": "結果をクリップボードにコピーしました！",
     "copyPrompt": "結果をコピーしてください：",
-    "adLoading": "広告読み込み中..."
+    "adLoading": "広告読み込み中...",
+    "comboLabel": "コンボ",
+    "slowLabel": "スロー",
+    "floorBanner": "{floor}階！",
+    "floorAchieved": "{floor}階達成！",
+    "comboBreak": "-コンボ"
   },
   "skins": {
     "title": "ブロックテーマ",
@@ -98,19 +103,26 @@
     "zigzagDesc": "方向転換アーケードゲーム！",
     "emojiMergeName": "絵文字マージ",
     "emojiMergeDesc": "絵文字を合体させて進化！",
-    "colorMemoryName": "색상 기억력",
-    "colorMemoryDesc": "기억력 도전 게임"
+    "colorMemoryName": "カラーメモリー",
+    "colorMemoryDesc": "記憶力チャレンジゲーム"
+  },
+  "themeDesc": {
+    "classic": "デフォルトブロックテーマ",
+    "neon": "10階到達で解放",
+    "space": "30階到達で解放",
+    "candy": "50階到達で解放",
+    "retro": "100階到達で解放"
   },
   "combo": {
-    "3perfect": "🔥 3연속 완벽!",
-    "5perfect": "⚡ 5연속 완벽!",
-    "10perfect": "💥 10연속 완벽!",
-    "broken": "콤보 끊김!"
+    "3perfect": "🔥 3連続パーフェクト！",
+    "5perfect": "⚡ 5連続パーフェクト！",
+    "10perfect": "💥 10連続パーフェクト！",
+    "broken": "コンボ途切れ！"
   },
   "themes_unlock": {
-    "neon_50": "50점 달성! 네온 테마 해금",
-    "gold_100": "100점 달성! 골드 테마 해금",
-    "space_200": "200점 달성! 우주 테마 해금"
+    "neon_50": "50点達成！ネオンテーマ解放",
+    "gold_100": "100点達成！ゴールドテーマ解放",
+    "space_200": "200点達成！宇宙テーマ解放"
   },
   "error": {
     "storage": "プライベートモードでは一部機能が制限されます。",

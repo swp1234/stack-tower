@@ -36,7 +36,12 @@
     "shareText": "🏗️ Stack Tower에서 {floor}층 달성! ({emoji} {title})\n점수: {score}점 | 퍼펙트: {perfect}회\n도전해보세요!",
     "copiedToClipboard": "결과가 클립보드에 복사되었습니다!",
     "copyPrompt": "결과를 복사하세요:",
-    "adLoading": "광고 로딩 중..."
+    "adLoading": "광고 로딩 중...",
+    "comboLabel": "콤보",
+    "slowLabel": "슬로우",
+    "floorBanner": "{floor}층!",
+    "floorAchieved": "{floor}층 달성!",
+    "comboBreak": "-콤보"
   },
   "skins": {
     "title": "블록 테마 선택",
@@ -100,6 +105,13 @@
     "emojiMergeDesc": "이모지 합쳐 진화시키기!",
     "colorMemoryName": "색상 기억력",
     "colorMemoryDesc": "기억력 도전 게임"
+  },
+  "themeDesc": {
+    "classic": "기본 블록 테마",
+    "neon": "10층 달성 시 해금",
+    "space": "30층 달성 시 해금",
+    "candy": "50층 달성 시 해금",
+    "retro": "100층 달성 시 해금"
   },
   "combo": {
     "3perfect": "🔥 3연속 완벽!",

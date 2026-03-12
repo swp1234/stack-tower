@@ -36,7 +36,12 @@
     "shareText": "🏗️ Reached floor {floor} in Stack Tower! ({emoji} {title})\nScore: {score} | Perfects: {perfect}\nTry it!",
     "copiedToClipboard": "Result copied to clipboard!",
     "copyPrompt": "Copy the result:",
-    "adLoading": "Loading ad..."
+    "adLoading": "Loading ad...",
+    "comboLabel": "COMBO",
+    "slowLabel": "SLOW",
+    "floorBanner": "FLOOR {floor}!",
+    "floorAchieved": "FLOOR {floor} ACHIEVED!",
+    "comboBreak": "-Combo"
   },
   "skins": {
     "title": "Block Theme",
@@ -98,8 +103,15 @@
     "zigzagDesc": "Direction-switching arcade game!",
     "emojiMergeName": "Emoji Merge",
     "emojiMergeDesc": "Merge emojis to evolve!",
-    "colorMemoryName": "색상 기억력",
-    "colorMemoryDesc": "기억력 도전 게임"
+    "colorMemoryName": "Color Memory",
+    "colorMemoryDesc": "Memory challenge game"
+  },
+  "themeDesc": {
+    "classic": "Default block theme",
+    "neon": "Unlock at floor 10",
+    "space": "Unlock at floor 30",
+    "candy": "Unlock at floor 50",
+    "retro": "Unlock at floor 100"
   },
   "combo": {
     "3perfect": "🔥 3 Perfect Combo!",

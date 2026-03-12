@@ -36,7 +36,12 @@
     "shareText": "🏗️ Stack Tower'da {floor}. kata ulaştım! ({emoji} {title})\nPuan: {score} | Mükemmel: {perfect}\nSen de dene!",
     "copiedToClipboard": "Sonuç panoya kopyalandı!",
     "copyPrompt": "Sonucu kopyalayın:",
-    "adLoading": "Reklam yükleniyor..."
+    "adLoading": "Reklam yükleniyor...",
+    "comboLabel": "KOMBO",
+    "slowLabel": "YAVAS",
+    "floorBanner": "KAT {floor}!",
+    "floorAchieved": "KAT {floor} BASARILDI!",
+    "comboBreak": "-Kombo"
   },
   "skins": {
     "title": "Blok Teması",
@@ -98,19 +103,26 @@
     "zigzagDesc": "Yön değiştirme arcade oyunu!",
     "emojiMergeName": "Emoji Merge",
     "emojiMergeDesc": "Emojileri birleştir ve evrimleştir!",
-    "colorMemoryName": "색상 기억력",
-    "colorMemoryDesc": "기억력 도전 게임"
+    "colorMemoryName": "Renk Hafizasi",
+    "colorMemoryDesc": "Hafiza meydan okuma oyunu"
+  },
+  "themeDesc": {
+    "classic": "Varsayilan blok temasi",
+    "neon": "10. katta acilir",
+    "space": "30. katta acilir",
+    "candy": "50. katta acilir",
+    "retro": "100. katta acilir"
   },
   "combo": {
-    "3perfect": "🔥 3연속 완벽!",
-    "5perfect": "⚡ 5연속 완벽!",
-    "10perfect": "💥 10연속 완벽!",
-    "broken": "콤보 끊김!"
+    "3perfect": "🔥 3 ust uste mukemmel!",
+    "5perfect": "⚡ 5 ust uste mukemmel!",
+    "10perfect": "💥 10 ust uste mukemmel!",
+    "broken": "Kombo kirildi!"
   },
   "themes_unlock": {
-    "neon_50": "50점 달성! 네온 테마 해금",
-    "gold_100": "100점 달성! 골드 테마 해금",
-    "space_200": "200점 달성! 우주 테마 해금"
+    "neon_50": "50 puan! Neon Tema acildi",
+    "gold_100": "100 puan! Altin Tema acildi",
+    "space_200": "200 puan! Uzay Tema acildi"
   },
   "error": {
     "storage": "Gizli modda bazı özellikler sınırlı olabilir.",

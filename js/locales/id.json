@@ -36,7 +36,12 @@
     "shareText": "🏗️ Mencapai lantai {floor} di Stack Tower! ({emoji} {title})\nSkor: {score} | Sempurna: {perfect}\nCoba mainkan!",
     "copiedToClipboard": "Hasil disalin ke clipboard!",
     "copyPrompt": "Salin hasilnya:",
-    "adLoading": "Memuat iklan..."
+    "adLoading": "Memuat iklan...",
+    "comboLabel": "KOMBO",
+    "slowLabel": "LAMBAT",
+    "floorBanner": "LANTAI {floor}!",
+    "floorAchieved": "LANTAI {floor} TERCAPAI!",
+    "comboBreak": "-Kombo"
   },
   "skins": {
     "title": "Tema Blok",
@@ -98,19 +103,26 @@
     "zigzagDesc": "Permainan arcade ganti arah!",
     "emojiMergeName": "Emoji Merge",
     "emojiMergeDesc": "Gabung emoji untuk berevolusi!",
-    "colorMemoryName": "색상 기억력",
-    "colorMemoryDesc": "기억력 도전 게임"
+    "colorMemoryName": "Memori Warna",
+    "colorMemoryDesc": "Permainan tantangan memori"
+  },
+  "themeDesc": {
+    "classic": "Tema blok default",
+    "neon": "Buka di lantai 10",
+    "space": "Buka di lantai 30",
+    "candy": "Buka di lantai 50",
+    "retro": "Buka di lantai 100"
   },
   "combo": {
-    "3perfect": "🔥 3연속 완벽!",
-    "5perfect": "⚡ 5연속 완벽!",
-    "10perfect": "💥 10연속 완벽!",
-    "broken": "콤보 끊김!"
+    "3perfect": "🔥 3 sempurna berturut-turut!",
+    "5perfect": "⚡ 5 sempurna berturut-turut!",
+    "10perfect": "💥 10 sempurna berturut-turut!",
+    "broken": "Kombo terputus!"
   },
   "themes_unlock": {
-    "neon_50": "50점 달성! 네온 테마 해금",
-    "gold_100": "100점 달성! 골드 테마 해금",
-    "space_200": "200점 달성! 우주 테마 해금"
+    "neon_50": "50 poin! Tema Neon terbuka",
+    "gold_100": "100 poin! Tema Emas terbuka",
+    "space_200": "200 poin! Tema Luar Angkasa terbuka"
   },
   "error": {
     "storage": "Beberapa fitur mungkin terbatas dalam mode privat.",

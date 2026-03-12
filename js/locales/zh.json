@@ -36,7 +36,12 @@
     "shareText": "🏗️ 在Stack Tower达到了{floor}层！({emoji} {title})\n分数: {score} | 完美: {perfect}次\n来挑战吧！",
     "copiedToClipboard": "结果已复制到剪贴板！",
     "copyPrompt": "复制结果：",
-    "adLoading": "广告加载中..."
+    "adLoading": "广告加载中...",
+    "comboLabel": "连击",
+    "slowLabel": "慢动作",
+    "floorBanner": "第{floor}层！",
+    "floorAchieved": "第{floor}层达成！",
+    "comboBreak": "-连击"
   },
   "skins": {
     "title": "积木主题",
@@ -98,8 +103,15 @@
     "zigzagDesc": "方向切换街机游戏！",
     "emojiMergeName": "表情合并",
     "emojiMergeDesc": "合并表情进化！",
-    "colorMemoryName": "색상 기억력",
-    "colorMemoryDesc": "기억력 도전 게임"
+    "colorMemoryName": "颜色记忆",
+    "colorMemoryDesc": "记忆力挑战游戏"
+  },
+  "themeDesc": {
+    "classic": "默认方块主题",
+    "neon": "到达10层解锁",
+    "space": "到达30层解锁",
+    "candy": "到达50层解锁",
+    "retro": "到达100层解锁"
   },
   "combo": {
     "3perfect": "🔥 3连完美！",

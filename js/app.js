@@ -373,11 +373,13 @@ class StackTowerGame {
 
         // Combo milestone effects
         if (this.combo === 5) {
-          this.floatingTexts.push(new FloatingText('COMBO x5!', centerX, centerY - 40, '#FFD700'));
+          const comboLabel = this._t('game.comboLabel') !== 'game.comboLabel' ? this._t('game.comboLabel') : 'COMBO';
+          this.floatingTexts.push(new FloatingText(`${comboLabel} x5!`, centerX, centerY - 40, '#FFD700'));
           this.effectBursts.push(new ParticleBurst(centerX, centerY, 'confetti', '#FFD700'));
           this.shakeAmount = 15;
         } else if (this.combo === 10) {
-          this.floatingTexts.push(new FloatingText('COMBO x10!', centerX, centerY - 40, '#FF6600'));
+          const comboLabel = this._t('game.comboLabel') !== 'game.comboLabel' ? this._t('game.comboLabel') : 'COMBO';
+          this.floatingTexts.push(new FloatingText(`${comboLabel} x10!`, centerX, centerY - 40, '#FF6600'));
           for (let i = 0; i < 2; i++) {
             this.effectBursts.push(new ParticleBurst(centerX + (i-0.5)*40, centerY, 'gold'));
           }
@@ -447,7 +449,8 @@ class StackTowerGame {
       // Combo break effect
       if (wasCombo) {
         this.shakeAmount = 5;
-        this.floatingTexts.push(new FloatingText('-Combo', curr.x + curr.w / 2, curr.y - 30, '#FF6666'));
+        const comboBreakText = this._t('game.comboBreak') !== 'game.comboBreak' ? this._t('game.comboBreak') : '-Combo';
+        this.floatingTexts.push(new FloatingText(comboBreakText, curr.x + curr.w / 2, curr.y - 30, '#FF6666'));
       }
     }
 
@@ -458,17 +461,17 @@ class StackTowerGame {
     // Milestone bonuses (Floor 10, 20, 30, etc.)
     if (this.floor % 10 === 0) {
       let bonusScore = 150;
-      let bannerText = `FLOOR ${this.floor}!`;
+      let bannerText = this._t('game.floorBanner') !== 'game.floorBanner' ? this._t('game.floorBanner', { floor: this.floor }) : `FLOOR ${this.floor}!`;
 
       if (this.floor === 10) {
         bonusScore = 200;  // IMPROVED: was 100
-        bannerText = 'FLOOR 10 ACHIEVED!';
+        bannerText = this._t('game.floorAchieved') !== 'game.floorAchieved' ? this._t('game.floorAchieved', { floor: 10 }) : 'FLOOR 10 ACHIEVED!';
       } else if (this.floor === 20) {
         bonusScore = 400;  // IMPROVED: was 200
-        bannerText = 'FLOOR 20 ACHIEVED!';
+        bannerText = this._t('game.floorAchieved') !== 'game.floorAchieved' ? this._t('game.floorAchieved', { floor: 20 }) : 'FLOOR 20 ACHIEVED!';
       } else if (this.floor === 30) {
         bonusScore = 600;  // IMPROVED: was 300
-        bannerText = 'FLOOR 30 ACHIEVED!';
+        bannerText = this._t('game.floorAchieved') !== 'game.floorAchieved' ? this._t('game.floorAchieved', { floor: 30 }) : 'FLOOR 30 ACHIEVED!';
       } else if (this.floor % 20 === 0) {
         bonusScore = 400;  // IMPROVED: was 200
       }
@@ -974,7 +977,7 @@ class StackTowerGame {
       ctx.font = `bold ${fontSize}px -apple-system, sans-serif`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.fillText(`${this.combo}x COMBO`, 0, 0);
+      ctx.fillText(`${this.combo}x ${this._t('game.comboLabel') !== 'game.comboLabel' ? this._t('game.comboLabel') : 'COMBO'}`, 0, 0);
 
       ctx.restore();
     }
@@ -1041,7 +1044,8 @@ class StackTowerGame {
       ctx.fillStyle = '#9b59b6';
       ctx.font = 'bold 14px -apple-system, sans-serif';
       ctx.textAlign = 'center';
-      ctx.fillText(`⏱ SLOW (${Math.ceil(this.slowTimer / 60)}s)`, W / 2, H - 20);
+      const slowLabel = this._t('game.slowLabel') !== 'game.slowLabel' ? this._t('game.slowLabel') : 'SLOW';
+      ctx.fillText(`⏱ ${slowLabel} (${Math.ceil(this.slowTimer / 60)}s)`, W / 2, H - 20);
     }
 
     ctx.restore();
