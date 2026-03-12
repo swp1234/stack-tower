@@ -111,5 +111,13 @@
     "neon_50": "50점 달성! 네온 테마 해금",
     "gold_100": "100점 달성! 골드 테마 해금",
     "space_200": "200점 달성! 우주 테마 해금"
+  },
+  "error": {
+    "storage": "Certaines fonctions peuvent être limitées en mode privé.",
+    "data": "Erreur de chargement. Veuillez rafraîchir la page.",
+    "canvas": "Problème de rendu graphique. Veuillez réessayer.",
+    "audio": "Audio indisponible. Vous pouvez continuer.",
+    "network": "Vérifiez votre connexion et réessayez.",
+    "general": "Un problème est survenu. Rafraîchissez ou réessayez."
   }
 }

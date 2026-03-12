@@ -111,5 +111,13 @@
     "neon_50": "50 pts! Neon Theme Unlocked",
     "gold_100": "100 pts! Gold Theme Unlocked",
     "space_200": "200 pts! Space Theme Unlocked"
+  },
+  "error": {
+    "storage": "Some features may be limited in private mode. You can continue.",
+    "data": "Data loading error. Please refresh the page.",
+    "canvas": "Graphics rendering issue. Please try again.",
+    "audio": "Audio unavailable. You can still continue.",
+    "network": "Please check your connection and try again.",
+    "general": "Something went wrong. Please refresh or try again."
   }
 }

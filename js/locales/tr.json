@@ -111,5 +111,13 @@
     "neon_50": "50점 달성! 네온 테마 해금",
     "gold_100": "100점 달성! 골드 테마 해금",
     "space_200": "200점 달성! 우주 테마 해금"
+  },
+  "error": {
+    "storage": "Gizli modda bazı özellikler sınırlı olabilir.",
+    "data": "Veri yükleme hatası. Lütfen sayfayı yenileyin.",
+    "canvas": "Grafik oluşturma sorunu. Lütfen tekrar deneyin.",
+    "audio": "Ses kullanılamıyor. Devam edebilirsiniz.",
+    "network": "Bağlantınızı kontrol edip tekrar deneyin.",
+    "general": "Bir şeyler ters gitti. Yenileyip tekrar deneyin."
   }
 }
