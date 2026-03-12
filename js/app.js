@@ -274,17 +274,17 @@ class StackTowerGame {
     this.direction = this.stack.length % 2 === 0 ? 1 : -1;
     this.movingBlock.x = this.direction === 1 ? -this.movingBlock.w : this.W;
 
-    // Improved difficulty curve: slower early game, gradual increase
-    // Floors 0-10: slow speed increase (baseSpeed + 0.1 * floor)
-    // Floors 10-25: moderate speed increase (baseSpeed + 0.5 + 0.2 * (floor - 10))
-    // Floors 25+: capped at max speed for sustainability
+    // Gentler difficulty curve: very slow early, gradual increase
+    // Floors 0-8: barely increases (let players build confidence)
+    // Floors 8-20: moderate ramp
+    // Floors 20+: capped for sustainability
     let newSpeed;
-    if (this.floor <= 10) {
-      newSpeed = this.baseSpeed + (this.floor * 0.1);
-    } else if (this.floor <= 25) {
-      newSpeed = this.baseSpeed + 0.5 + ((this.floor - 10) * 0.15);
+    if (this.floor <= 8) {
+      newSpeed = this.baseSpeed + (this.floor * 0.05);
+    } else if (this.floor <= 20) {
+      newSpeed = this.baseSpeed + 0.4 + ((this.floor - 8) * 0.12);
     } else {
-      newSpeed = Math.min(this.baseSpeed + 2.8, 7);
+      newSpeed = Math.min(this.baseSpeed + 1.84, 6);
     }
     this.speed = newSpeed;
 
@@ -296,9 +296,9 @@ class StackTowerGame {
 
   // Get Perfect condition threshold based on floor
   getPerfectThreshold() {
-    if (this.floor <= 5) return 8;   // Easy (offset <= 8px)
-    if (this.floor <= 15) return 6;  // Medium (offset <= 6px)
-    return 5;                         // Hard (offset <= 5px)
+    if (this.floor <= 8) return 12;   // Easy (offset <= 12px)
+    if (this.floor <= 20) return 8;   // Medium (offset <= 8px)
+    return 6;                          // Hard (offset <= 6px)
   }
 
   dropBlock() {
@@ -416,8 +416,8 @@ class StackTowerGame {
         curr.w = overlapW;
       }
 
-      // Apply 50% width reduction cap
-      const minWidth = Math.max(40, originalW * 0.5);
+      // Apply width reduction cap (generous minimum for longer sessions)
+      const minWidth = Math.max(60, originalW * 0.55);
       if (curr.w < minWidth) {
         const diff = minWidth - curr.w;
         curr.w = minWidth;
