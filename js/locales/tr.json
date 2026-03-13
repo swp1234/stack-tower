@@ -41,7 +41,16 @@
     "slowLabel": "YAVAS",
     "floorBanner": "KAT {floor}!",
     "floorAchieved": "KAT {floor} BASARILDI!",
-    "comboBreak": "-Kombo"
+    "comboBreak": "-Kombo",
+    "bestFloor": "EN IYI",
+    "newRecord": "YENI REKOR!",
+    "tapToRestart": "Yeniden baslamak icin dokun",
+    "nearMisses": "Neredeyse",
+    "accuracy": "Dogruluk",
+    "bestCombo": "En Iyi Kombo",
+    "milestone10": "Iyi baslangic!",
+    "milestone20": "Inanilmaz!",
+    "milestone30": "Efsanevi!"
   },
   "skins": {
     "title": "Blok Teması",

@@ -41,7 +41,16 @@
     "slowLabel": "SLOW",
     "floorBanner": "FLOOR {floor}!",
     "floorAchieved": "FLOOR {floor} ACHIEVED!",
-    "comboBreak": "-Combo"
+    "comboBreak": "-Combo",
+    "bestFloor": "BEST",
+    "newRecord": "NEW RECORD!",
+    "tapToRestart": "Tap anywhere to restart",
+    "nearMisses": "Near Misses",
+    "accuracy": "Accuracy",
+    "bestCombo": "Best Combo",
+    "milestone10": "Getting Started!",
+    "milestone20": "Incredible!",
+    "milestone30": "Legendary!"
   },
   "skins": {
     "title": "Block Theme",

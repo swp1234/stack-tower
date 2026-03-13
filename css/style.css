@@ -935,6 +935,12 @@ body {
         gap: 0.75rem;
     }
 
+    .score-breakdown {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 0.5rem;
+        padding: 0.75rem;
+    }
+
     .skin-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -1033,6 +1039,127 @@ body {
     0% { transform: scale(1.5); opacity: 0; }
     50% { transform: scale(1.1); opacity: 1; }
     100% { transform: scale(1); opacity: 1; }
+}
+
+/* === Personal Best Display === */
+.pb-display {
+    border-left: 1px solid rgba(255,255,255,0.1);
+    padding-left: 1rem;
+}
+
+/* === NEW RECORD Banner === */
+.new-record-banner {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #ffd700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 0 0 20px rgba(255,215,0,0.6), 0 0 40px rgba(255,215,0,0.3);
+    z-index: 15;
+    pointer-events: none;
+    animation: newRecordPulse 1s ease-in-out infinite;
+}
+@keyframes newRecordPulse {
+    0%, 100% { transform: scale(1); opacity: 0.9; }
+    50% { transform: scale(1.08); opacity: 1; }
+}
+
+/* === Combo Display === */
+.combo-display {
+    position: absolute;
+    top: 110px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    pointer-events: none;
+    z-index: 15;
+    transition: all 0.2s ease;
+}
+.combo-display.combo-fire { color: #ff6b35; font-size: 1.3rem; text-shadow: 0 0 12px rgba(255,107,53,0.5); }
+.combo-display.combo-blaze { color: #ff4500; font-size: 1.5rem; text-shadow: 0 0 20px rgba(255,69,0,0.6); }
+.combo-display.combo-inferno { color: #ff0000; font-size: 1.8rem; text-shadow: 0 0 30px rgba(255,0,0,0.7), 0 0 60px rgba(255,0,0,0.3); animation: comboInferno 0.5s ease-in-out infinite; }
+@keyframes comboInferno {
+    0%, 100% { transform: scale(1) rotate(-1deg); }
+    50% { transform: scale(1.05) rotate(1deg); }
+}
+
+/* === Milestone Banner === */
+.milestone-banner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    font-weight: 900;
+    color: #ffd700;
+    text-align: center;
+    text-shadow: 0 0 30px rgba(255,215,0,0.5);
+    letter-spacing: 3px;
+    pointer-events: none;
+    z-index: 20;
+    animation: milestoneAppear 2s ease forwards;
+    white-space: nowrap;
+}
+@keyframes milestoneAppear {
+    0% { transform: translate(-50%, -50%) scale(0.3); opacity: 0; }
+    20% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+    40% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    80% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(0.8) translateY(-40px); opacity: 0; }
+}
+
+/* === Score Breakdown === */
+.score-breakdown {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 1rem;
+}
+.breakdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+}
+.breakdown-label {
+    font-size: 0.65rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.breakdown-value {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+[data-theme="light"] .score-breakdown {
+    background: rgba(52,152,219,0.04);
+    border-color: rgba(52,152,219,0.1);
+}
+
+/* === Tap to Restart === */
+.tap-to-restart {
+    text-align: center;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.4);
+    padding: 0.75rem;
+    animation: tapPulse 1.5s ease-in-out infinite;
+    cursor: pointer;
+}
+[data-theme="light"] .tap-to-restart {
+    color: var(--text-secondary);
 }
 
 .hidden {

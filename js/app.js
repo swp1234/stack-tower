@@ -41,6 +41,9 @@ class StackTowerGame {
     this.perfectStreak = 0;
     this.bestStreak = 0;
     this.combo = 0;
+    this.nearMissCount = 0;
+    this.totalDrops = 0;
+    this.newRecordShown = false;
 
     // Speed
     this.baseSpeed = 2.5;
@@ -202,6 +205,9 @@ class StackTowerGame {
     this.perfectStreak = 0;
     this.bestStreak = 0;
     this.combo = 0;
+    this.nearMissCount = 0;
+    this.totalDrops = 0;
+    this.newRecordShown = false;
     this.stack = [];
     this.movingBlock = null;
     this.fallingPiece = null;
@@ -238,6 +244,19 @@ class StackTowerGame {
 
     this.updateScreen();
     this.updateHUD();
+
+    // Hide overlays
+    const recordBanner = document.getElementById('new-record-banner');
+    if (recordBanner) recordBanner.classList.add('hidden');
+    this.hideComboDisplay();
+    const milestoneBanner = document.getElementById('milestone-banner');
+    if (milestoneBanner) milestoneBanner.classList.add('hidden');
+
+    // Remove quick restart listener
+    const gameOverScreen = document.getElementById('gameOverScreen');
+    if (gameOverScreen && this._quickRestartHandler) {
+      gameOverScreen.removeEventListener('click', this._quickRestartHandler);
+    }
 
     // Resize canvas after screen transition
     setTimeout(() => this.resizeCanvas(), 50);
@@ -325,6 +344,7 @@ class StackTowerGame {
 
     const offset = Math.abs((curr.x + curr.w / 2) - (prev.x + prev.w / 2));
     const perfectThreshold = this.getPerfectThreshold();
+    this.totalDrops++;
 
     // Perfect check (dynamic threshold based on floor)
     if (offset <= perfectThreshold) {
@@ -371,26 +391,45 @@ class StackTowerGame {
         if (curr.x < 0) { curr.x = 0; }
         if (curr.x + curr.w > this.W) { curr.x = this.W - curr.w; }
 
-        // Combo milestone effects
-        if (this.combo === 5) {
-          const comboLabel = this._t('game.comboLabel') !== 'game.comboLabel' ? this._t('game.comboLabel') : 'COMBO';
+        // Combo milestone effects with escalating intensity
+        const comboLabel = this._t('game.comboLabel') !== 'game.comboLabel' ? this._t('game.comboLabel') : 'COMBO';
+        if (this.combo === 3) {
+          this.floatingTexts.push(new FloatingText(`${comboLabel} x3!`, centerX, centerY - 40, '#2ecc71'));
+          this.shakeAmount = 10;
+        } else if (this.combo === 5) {
           this.floatingTexts.push(new FloatingText(`${comboLabel} x5!`, centerX, centerY - 40, '#FFD700'));
           this.effectBursts.push(new ParticleBurst(centerX, centerY, 'confetti', '#FFD700'));
           this.shakeAmount = 15;
         } else if (this.combo === 10) {
-          const comboLabel = this._t('game.comboLabel') !== 'game.comboLabel' ? this._t('game.comboLabel') : 'COMBO';
           this.floatingTexts.push(new FloatingText(`${comboLabel} x10!`, centerX, centerY - 40, '#FF6600'));
           for (let i = 0; i < 2; i++) {
             this.effectBursts.push(new ParticleBurst(centerX + (i-0.5)*40, centerY, 'gold'));
           }
           this.shakeAmount = 20;
+        } else if (this.combo === 15) {
+          this.floatingTexts.push(new FloatingText(`${comboLabel} x15!`, centerX, centerY - 40, '#FF0000'));
+          for (let i = 0; i < 3; i++) {
+            this.effectBursts.push(new ParticleBurst(centerX + (i-1)*60, centerY, 'gold'));
+          }
+          this.shakeAmount = 25;
+        } else if (this.combo === 20) {
+          this.floatingTexts.push(new FloatingText(`${comboLabel} x20!`, centerX, centerY - 40, '#FF00FF'));
+          for (let i = 0; i < 4; i++) {
+            this.effectBursts.push(new ParticleBurst(centerX + (i-1.5)*50, centerY, 'confetti', '#FF00FF'));
+          }
+          this.shakeAmount = 30;
+          this.screenFlash = new ScreenFlash('rgba(255,0,255,0.3)', 0.4);
         }
       }
+
+      // Update combo HUD display
+      this.updateComboDisplay();
     } else {
       // Trim the block
       const wasCombo = this.combo > 0;
       this.combo = 0;
       this.perfectStreak = 0;
+      this.hideComboDisplay();
 
       // Create falling trimmed piece (with width protection)
       const originalW = curr.w;
@@ -431,7 +470,8 @@ class StackTowerGame {
 
       // Dynamic Perfect condition feedback
       if (offset <= 10) {
-        // NICE - offset within 10px
+        // NICE - offset within 10px (near miss)
+        this.nearMissCount++;
         this.showFeedback('NICE', '#3498db');
         this.effectBursts.push(new ParticleBurst(curr.x + curr.w / 2, curr.y, 'sparkle', '#3498db'));
         this.score += 20;
@@ -469,38 +509,53 @@ class StackTowerGame {
     this.floor++;
     this.stats.totalFloors++;
 
+    // Check for new personal best during gameplay
+    if (this.floor > this.stats.maxFloor && !this.newRecordShown) {
+      this.newRecordShown = true;
+      this.showNewRecordBanner();
+    }
+
     // Milestone bonuses (Floor 10, 20, 30, etc.)
     if (this.floor % 10 === 0) {
       let bonusScore = 150;
       let bannerText = this._t('game.floorBanner') !== 'game.floorBanner' ? this._t('game.floorBanner', { floor: this.floor }) : `FLOOR ${this.floor}!`;
+      let milestoneMsg = '';
 
       if (this.floor === 10) {
-        bonusScore = 200;  // IMPROVED: was 100
+        bonusScore = 200;
         bannerText = this._t('game.floorAchieved') !== 'game.floorAchieved' ? this._t('game.floorAchieved', { floor: 10 }) : 'FLOOR 10 ACHIEVED!';
+        milestoneMsg = this._t('game.milestone10') !== 'game.milestone10' ? this._t('game.milestone10') : 'Getting Started!';
       } else if (this.floor === 20) {
-        bonusScore = 400;  // IMPROVED: was 200
+        bonusScore = 400;
         bannerText = this._t('game.floorAchieved') !== 'game.floorAchieved' ? this._t('game.floorAchieved', { floor: 20 }) : 'FLOOR 20 ACHIEVED!';
+        milestoneMsg = this._t('game.milestone20') !== 'game.milestone20' ? this._t('game.milestone20') : 'Incredible!';
       } else if (this.floor === 30) {
-        bonusScore = 600;  // IMPROVED: was 300
+        bonusScore = 600;
         bannerText = this._t('game.floorAchieved') !== 'game.floorAchieved' ? this._t('game.floorAchieved', { floor: 30 }) : 'FLOOR 30 ACHIEVED!';
+        milestoneMsg = this._t('game.milestone30') !== 'game.milestone30' ? this._t('game.milestone30') : 'Legendary!';
       } else if (this.floor % 20 === 0) {
-        bonusScore = 400;  // IMPROVED: was 200
+        bonusScore = 400;
       }
 
       this.score += bonusScore;
       this.showFeedback(`+${bonusScore} ${bannerText}`, '#ffd700');
 
+      // Show milestone banner for special floors
+      if (milestoneMsg) {
+        this.showMilestoneBanner(`${bannerText}\n${milestoneMsg}`);
+      }
+
       // Extra effects for milestones
       if (this.floor % 10 === 0) {
         const centerX = this.W / 2;
         const centerY = this.H * 0.35;
-        // IMPROVED: More intense effects for milestone floors
-        for (let i = 0; i < 2; i++) {
+        const burstCount = this.floor >= 30 ? 3 : 2;
+        for (let i = 0; i < burstCount; i++) {
           this.effectBursts.push(new ParticleBurst(centerX, centerY, 'confetti', '#FFD700'));
           this.effectBursts.push(new ParticleBurst(centerX - 50, centerY, 'confetti', '#FF6600'));
           this.effectBursts.push(new ParticleBurst(centerX + 50, centerY, 'confetti', '#FFD700'));
         }
-        this.shakeAmount = 20;  // IMPROVED: was 15
+        this.shakeAmount = this.floor >= 30 ? 25 : 20;
       }
     }
 
@@ -972,26 +1027,7 @@ class StackTowerGame {
       ctx.globalAlpha = 1;
     }
 
-    // Combo counter
-    if (this.combo >= 2 && (this.state === 'playing' || this.state === 'falling')) {
-      const baseFontSize = 16;
-      const fontSize = Math.min(baseFontSize + Math.floor(this.combo / 5) * 2, 28);
-      const pulseScale = 1 + Math.sin(Date.now() * 0.005) * 0.08;
-
-      ctx.save();
-      ctx.translate(W / 2, 40);
-      ctx.scale(pulseScale, pulseScale);
-
-      ctx.shadowColor = 'rgba(255, 215, 0, 0.6)';
-      ctx.shadowBlur = 20;
-      ctx.fillStyle = '#ffd700';
-      ctx.font = `bold ${fontSize}px -apple-system, sans-serif`;
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillText(`${this.combo}x ${this._t('game.comboLabel') !== 'game.comboLabel' ? this._t('game.comboLabel') : 'COMBO'}`, 0, 0);
-
-      ctx.restore();
-    }
+    // Combo counter is now rendered via DOM element #combo-display
 
     // Flash overlay
     if (this.flashAlpha > 0) {
@@ -1187,6 +1223,53 @@ class StackTowerGame {
     }
   }
 
+  // === COMBO & MILESTONE UI ===
+  updateComboDisplay() {
+    const el = document.getElementById('combo-display');
+    if (!el) return;
+    if (this.combo < 2) { el.classList.add('hidden'); return; }
+
+    const comboLabel = this._t('game.comboLabel') !== 'game.comboLabel' ? this._t('game.comboLabel') : 'COMBO';
+    el.textContent = `${this.combo}x ${comboLabel}`;
+    el.classList.remove('hidden', 'combo-fire', 'combo-blaze', 'combo-inferno');
+
+    if (this.combo >= 15) {
+      el.classList.add('combo-inferno');
+    } else if (this.combo >= 8) {
+      el.classList.add('combo-blaze');
+    } else if (this.combo >= 3) {
+      el.classList.add('combo-fire');
+    }
+  }
+
+  hideComboDisplay() {
+    const el = document.getElementById('combo-display');
+    if (el) el.classList.add('hidden');
+  }
+
+  showNewRecordBanner() {
+    const el = document.getElementById('new-record-banner');
+    if (el) {
+      el.classList.remove('hidden');
+      if (window.sfx) window.sfx.perfect();
+      if (typeof Haptic !== 'undefined') Haptic.success();
+      // Hide after 3 seconds
+      setTimeout(() => el.classList.add('hidden'), 3000);
+    }
+  }
+
+  showMilestoneBanner(text) {
+    const el = document.getElementById('milestone-banner');
+    if (!el) return;
+    el.textContent = text;
+    el.classList.remove('hidden');
+    // Re-trigger animation
+    el.style.animation = 'none';
+    el.offsetHeight; // force reflow
+    el.style.animation = '';
+    setTimeout(() => el.classList.add('hidden'), 2200);
+  }
+
   // === UI ===
   setupUI() {
     // Main screen buttons
@@ -1270,8 +1353,10 @@ class StackTowerGame {
   updateHUD() {
     const floorEl = document.getElementById('floorDisplay');
     const scoreEl = document.getElementById('scoreDisplay');
+    const bestEl = document.getElementById('bestFloorDisplay');
     if (floorEl) floorEl.textContent = this.floor;
     if (scoreEl) scoreEl.textContent = this.score;
+    if (bestEl) bestEl.textContent = this.stats.maxFloor;
   }
 
   updateGameOverUI(isNewBest) {
@@ -1315,11 +1400,49 @@ class StackTowerGame {
       if (bestTag) bestTag.style.display = 'none';
     }
 
+    // Score breakdown stats
+    const nearMissEl = document.getElementById('nearMissCount');
+    const bestComboEl = document.getElementById('bestComboCount');
+    const accuracyEl = document.getElementById('accuracyPercent');
+
+    if (nearMissEl) nearMissEl.textContent = this.nearMissCount;
+    if (bestComboEl) bestComboEl.textContent = `${this.bestStreak}x`;
+    if (accuracyEl) {
+      const accuracy = this.totalDrops > 0 ? Math.round((this.perfectCount / this.totalDrops) * 100) : 0;
+      accuracyEl.textContent = `${accuracy}%`;
+    }
+
     // Hide revive if already used
     const reviveBtn = document.getElementById('reviveGameBtn');
     if (reviveBtn) {
       reviveBtn.style.display = this.reviveUsed ? 'none' : 'block';
     }
+
+    // Quick restart: tap anywhere on game over screen
+    this.setupQuickRestart();
+  }
+
+  setupQuickRestart() {
+    const gameOverScreen = document.getElementById('gameOverScreen');
+    if (!gameOverScreen) return;
+
+    // Remove previous listener if any
+    if (this._quickRestartHandler) {
+      gameOverScreen.removeEventListener('click', this._quickRestartHandler);
+    }
+
+    this._quickRestartHandler = (e) => {
+      // Don't restart if clicking buttons or links
+      if (e.target.closest('button') || e.target.closest('a')) return;
+      this.startGame();
+    };
+
+    // Small delay to prevent accidental restart
+    setTimeout(() => {
+      if (this.screen === 'gameOver') {
+        gameOverScreen.addEventListener('click', this._quickRestartHandler);
+      }
+    }, 500);
   }
 
   showMainScreen() {
@@ -1327,6 +1450,11 @@ class StackTowerGame {
     this.screen = 'main';
     this.updateScreen();
     this.updateMainUI();
+    // Clean up quick restart listener
+    const gameOverScreen = document.getElementById('gameOverScreen');
+    if (gameOverScreen && this._quickRestartHandler) {
+      gameOverScreen.removeEventListener('click', this._quickRestartHandler);
+    }
   }
 
   showThemeScreen() {

@@ -41,7 +41,16 @@
     "slowLabel": "LANGSAM",
     "floorBanner": "ETAGE {floor}!",
     "floorAchieved": "ETAGE {floor} ERREICHT!",
-    "comboBreak": "-Kombo"
+    "comboBreak": "-Kombo",
+    "bestFloor": "BEST",
+    "newRecord": "NEUER REKORD!",
+    "tapToRestart": "Tippe zum Neustart",
+    "nearMisses": "Knapp daneben",
+    "accuracy": "Genauigkeit",
+    "bestCombo": "Bestes Kombo",
+    "milestone10": "Guter Start!",
+    "milestone20": "Unglaublich!",
+    "milestone30": "Legendar!"
   },
   "skins": {
     "title": "Block-Design",

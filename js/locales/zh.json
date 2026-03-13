@@ -41,7 +41,16 @@
     "slowLabel": "慢动作",
     "floorBanner": "第{floor}层！",
     "floorAchieved": "第{floor}层达成！",
-    "comboBreak": "-连击"
+    "comboBreak": "-连击",
+    "bestFloor": "BEST",
+    "newRecord": "NEW RECORD!",
+    "tapToRestart": "点击任意处重新开始",
+    "nearMisses": "险些命中",
+    "accuracy": "准确率",
+    "bestCombo": "最佳连击",
+    "milestone10": "好的开始!",
+    "milestone20": "太厉害了!",
+    "milestone30": "传奇!"
   },
   "skins": {
     "title": "积木主题",

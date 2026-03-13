@@ -41,7 +41,16 @@
     "slowLabel": "LENTO",
     "floorBanner": "PISO {floor}!",
     "floorAchieved": "PISO {floor} LOGRADO!",
-    "comboBreak": "-Combo"
+    "comboBreak": "-Combo",
+    "bestFloor": "MEJOR",
+    "newRecord": "NUEVO RECORD!",
+    "tapToRestart": "Toca para reiniciar",
+    "nearMisses": "Casi",
+    "accuracy": "Precision",
+    "bestCombo": "Mejor Combo",
+    "milestone10": "Buen comienzo!",
+    "milestone20": "Increible!",
+    "milestone30": "Legendario!"
   },
   "skins": {
     "title": "Tema de Bloque",

@@ -41,7 +41,16 @@
     "slowLabel": "LENTO",
     "floorBanner": "ANDAR {floor}!",
     "floorAchieved": "ANDAR {floor} ALCANCADO!",
-    "comboBreak": "-Combo"
+    "comboBreak": "-Combo",
+    "bestFloor": "MELHOR",
+    "newRecord": "NOVO RECORDE!",
+    "tapToRestart": "Toque para reiniciar",
+    "nearMisses": "Quase",
+    "accuracy": "Precisao",
+    "bestCombo": "Melhor Combo",
+    "milestone10": "Bom comeco!",
+    "milestone20": "Incrivel!",
+    "milestone30": "Lendario!"
   },
   "skins": {
     "title": "Tema de Bloco",

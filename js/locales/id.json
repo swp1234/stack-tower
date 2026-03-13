@@ -41,7 +41,16 @@
     "slowLabel": "LAMBAT",
     "floorBanner": "LANTAI {floor}!",
     "floorAchieved": "LANTAI {floor} TERCAPAI!",
-    "comboBreak": "-Kombo"
+    "comboBreak": "-Kombo",
+    "bestFloor": "TERBAIK",
+    "newRecord": "REKOR BARU!",
+    "tapToRestart": "Ketuk untuk mulai ulang",
+    "nearMisses": "Hampir",
+    "accuracy": "Akurasi",
+    "bestCombo": "Kombo Terbaik",
+    "milestone10": "Awal yang bagus!",
+    "milestone20": "Luar biasa!",
+    "milestone30": "Legendaris!"
   },
   "skins": {
     "title": "Tema Blok",

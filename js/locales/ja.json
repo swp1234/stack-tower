@@ -41,7 +41,16 @@
     "slowLabel": "スロー",
     "floorBanner": "{floor}階！",
     "floorAchieved": "{floor}階達成！",
-    "comboBreak": "-コンボ"
+    "comboBreak": "-コンボ",
+    "bestFloor": "BEST",
+    "newRecord": "NEW RECORD!",
+    "tapToRestart": "タップしてリスタート",
+    "nearMisses": "ニアミス",
+    "accuracy": "精度",
+    "bestCombo": "ベストコンボ",
+    "milestone10": "良いスタート!",
+    "milestone20": "素晴らしい!",
+    "milestone30": "伝説的!"
   },
   "skins": {
     "title": "ブロックテーマ",

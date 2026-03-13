@@ -41,7 +41,16 @@
     "slowLabel": "RALENTI",
     "floorBanner": "ETAGE {floor} !",
     "floorAchieved": "ETAGE {floor} ATTEINT !",
-    "comboBreak": "-Combo"
+    "comboBreak": "-Combo",
+    "bestFloor": "MEILLEUR",
+    "newRecord": "NOUVEAU RECORD !",
+    "tapToRestart": "Appuie pour recommencer",
+    "nearMisses": "Presque",
+    "accuracy": "Precision",
+    "bestCombo": "Meilleur Combo",
+    "milestone10": "Bon debut !",
+    "milestone20": "Incroyable !",
+    "milestone30": "Legendaire !"
   },
   "skins": {
     "title": "Thème de Bloc",

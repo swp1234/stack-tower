@@ -41,7 +41,16 @@
     "slowLabel": "ЗАМЕДЛЕНИЕ",
     "floorBanner": "ЭТАЖ {floor}!",
     "floorAchieved": "ЭТАЖ {floor} ДОСТИГНУТ!",
-    "comboBreak": "-Комбо"
+    "comboBreak": "-Комбо",
+    "bestFloor": "ЛУЧШИЙ",
+    "newRecord": "НОВЫЙ РЕКОРД!",
+    "tapToRestart": "Нажмите для перезапуска",
+    "nearMisses": "Почти попал",
+    "accuracy": "Точность",
+    "bestCombo": "Лучшее комбо",
+    "milestone10": "Хорошее начало!",
+    "milestone20": "Невероятно!",
+    "milestone30": "Легендарно!"
   },
   "skins": {
     "title": "Тема блока",

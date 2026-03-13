@@ -41,7 +41,16 @@
     "slowLabel": "SLOW",
     "floorBanner": "मंजिल {floor}!",
     "floorAchieved": "मंजिल {floor} हासिल!",
-    "comboBreak": "-Combo"
+    "comboBreak": "-Combo",
+    "bestFloor": "BEST",
+    "newRecord": "NEW RECORD!",
+    "tapToRestart": "पुनः शुरू करने के लिए टैप करें",
+    "nearMisses": "करीब",
+    "accuracy": "सटीकता",
+    "bestCombo": "सर्वश्रेष्ठ कॉम्बो",
+    "milestone10": "अच्छी शुरुआत!",
+    "milestone20": "अविश्वसनीय!",
+    "milestone30": "दिग्गज!"
   },
   "skins": {
     "title": "ब्लॉक थीम",

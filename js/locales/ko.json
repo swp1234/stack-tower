@@ -41,7 +41,16 @@
     "slowLabel": "슬로우",
     "floorBanner": "{floor}층!",
     "floorAchieved": "{floor}층 달성!",
-    "comboBreak": "-콤보"
+    "comboBreak": "-콤보",
+    "bestFloor": "BEST",
+    "newRecord": "NEW RECORD!",
+    "tapToRestart": "탭하여 다시 시작",
+    "nearMisses": "아슬아슬",
+    "accuracy": "정확도",
+    "bestCombo": "최고 콤보",
+    "milestone10": "좋은 출발!",
+    "milestone20": "대단해요!",
+    "milestone30": "전설적!"
   },
   "skins": {
     "title": "블록 테마 선택",

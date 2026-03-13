@@ -198,8 +198,15 @@
                         <span class="info-label" data-i18n="game.score">점수</span>
                         <span class="info-value" id="scoreDisplay">0</span>
                     </div>
+                    <div class="info-item pb-display">
+                        <span class="info-label" data-i18n="game.bestFloor">BEST</span>
+                        <span class="info-value" id="bestFloorDisplay">0</span>
+                    </div>
                 </div>
             </div>
+            <div id="new-record-banner" class="new-record-banner hidden" data-i18n="game.newRecord">NEW RECORD!</div>
+            <div id="combo-display" class="combo-display hidden"></div>
+            <div id="milestone-banner" class="milestone-banner hidden"></div>
 
             <!-- Top Banner Ad -->
             <div class="ad-container ad-top" style="display:none;">
@@ -247,6 +254,23 @@
                         <span class="result-value" id="perfectCount">0</span>
                     </div>
                 </div>
+
+                <div class="score-breakdown">
+                    <div class="breakdown-item">
+                        <span class="breakdown-label" data-i18n="game.nearMisses">아슬아슬</span>
+                        <span class="breakdown-value" id="nearMissCount">0</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span class="breakdown-label" data-i18n="game.bestCombo">최고 콤보</span>
+                        <span class="breakdown-value" id="bestComboCount">0</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span class="breakdown-label" data-i18n="game.accuracy">정확도</span>
+                        <span class="breakdown-value" id="accuracyPercent">0%</span>
+                    </div>
+                </div>
+
+                <div id="tapToRestart" class="tap-to-restart" data-i18n="game.tapToRestart">탭하여 다시 시작</div>
 
                 <div id="adContainer" class="ad-container ad-game-over"></div>
 
