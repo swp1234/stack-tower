@@ -124,6 +124,15 @@
     "gold_100": "100 pts ! Theme Or debloque",
     "space_200": "200 pts ! Theme Espace debloque"
   },
+  "result": {
+    "moreGames": "Plus de jeux"
+  },
+  "related": {
+    "flappyBird": "Flappy Bird",
+    "zigzagRunner": "Coureur Zigzag",
+    "blockPuzzle": "Puzzle de Blocs",
+    "idleClicker": "Clicker Idle"
+  },
   "error": {
     "storage": "Certaines fonctions peuvent être limitées en mode privé.",
     "data": "Erreur de chargement. Veuillez rafraîchir la page.",

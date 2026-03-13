@@ -124,6 +124,15 @@
     "gold_100": "100 poin! Tema Emas terbuka",
     "space_200": "200 poin! Tema Luar Angkasa terbuka"
   },
+  "result": {
+    "moreGames": "Game lainnya"
+  },
+  "related": {
+    "flappyBird": "Flappy Bird",
+    "zigzagRunner": "Pelari Zigzag",
+    "blockPuzzle": "Teka-teki Blok",
+    "idleClicker": "Idle Clicker"
+  },
   "error": {
     "storage": "Beberapa fitur mungkin terbatas dalam mode privat.",
     "data": "Kesalahan memuat data. Silakan muat ulang.",

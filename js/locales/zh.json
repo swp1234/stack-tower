@@ -124,6 +124,15 @@
     "gold_100": "100分！黄金主题解锁",
     "space_200": "200分！宇宙主题解锁"
   },
+  "result": {
+    "moreGames": "更多游戏"
+  },
+  "related": {
+    "flappyBird": "飞翔的小鸟",
+    "zigzagRunner": "之字跑者",
+    "blockPuzzle": "方块拼图",
+    "idleClicker": "放置点击"
+  },
   "error": {
     "storage": "隐私模式下部分功能可能受限。",
     "data": "数据加载错误，请刷新页面。",

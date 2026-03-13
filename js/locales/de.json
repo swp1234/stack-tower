@@ -124,6 +124,15 @@
     "gold_100": "100 Pkt! Gold-Design freigeschaltet",
     "space_200": "200 Pkt! Weltraum-Design freigeschaltet"
   },
+  "result": {
+    "moreGames": "Mehr Spiele"
+  },
+  "related": {
+    "flappyBird": "Flappy Bird",
+    "zigzagRunner": "Zickzack-Läufer",
+    "blockPuzzle": "Block-Puzzle",
+    "idleClicker": "Idle Clicker"
+  },
   "error": {
     "storage": "Einige Funktionen sind im privaten Modus eingeschränkt.",
     "data": "Fehler beim Laden. Bitte Seite aktualisieren.",
