@@ -446,6 +446,17 @@ class StackTowerGame {
         this.score += 10;
       }
 
+      // Shatter debris from trimmed piece
+      if (this.fallingPiece) {
+        const fp = this.fallingPiece;
+        const debrisCount = Math.min(8, Math.ceil(fp.w / 10));
+        for (let i = 0; i < debrisCount; i++) {
+          const dx = fp.x + Math.random() * fp.w;
+          const dy = fp.y + Math.random() * fp.h;
+          this.spawnParticles(dx, dy, fp.color || curr.color, 2);
+        }
+      }
+
       // Combo break effect
       if (wasCombo) {
         this.shakeAmount = 5;
