@@ -63,7 +63,8 @@
     "neon": "Neon",
     "space": "Weltraum",
     "candy": "Süßigkeit",
-    "retro": "Retro"
+    "retro": "Retro",
+    "sakura": "Sakura"
   },
   "titles": {
     "1": "Stapel-Anfänger",
@@ -111,7 +112,8 @@
     "neon": "Freischaltung auf Etage 10",
     "space": "Freischaltung auf Etage 30",
     "candy": "Freischaltung auf Etage 50",
-    "retro": "Freischaltung auf Etage 100"
+    "retro": "Freischaltung auf Etage 100",
+    "sakura": "In Etage 75 freischalten"
   },
   "combo": {
     "3perfect": "🔥 3 Perfekte in Folge!",

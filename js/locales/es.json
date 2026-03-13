@@ -63,7 +63,8 @@
     "neon": "Neón",
     "space": "Espacio",
     "candy": "Caramelo",
-    "retro": "Retro"
+    "retro": "Retro",
+    "sakura": "Sakura"
   },
   "titles": {
     "1": "Principiante",
@@ -111,7 +112,8 @@
     "neon": "Desbloquear en piso 10",
     "space": "Desbloquear en piso 30",
     "candy": "Desbloquear en piso 50",
-    "retro": "Desbloquear en piso 100"
+    "retro": "Desbloquear en piso 100",
+    "sakura": "Desbloquear en piso 75"
   },
   "combo": {
     "3perfect": "🔥 3 perfectos seguidos!",

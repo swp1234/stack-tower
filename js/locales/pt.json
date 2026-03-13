@@ -63,7 +63,8 @@
     "neon": "Neon",
     "space": "Espaço",
     "candy": "Doce",
-    "retro": "Retrô"
+    "retro": "Retrô",
+    "sakura": "Sakura"
   },
   "titles": {
     "1": "Iniciante",
@@ -111,7 +112,8 @@
     "neon": "Desbloqueie no andar 10",
     "space": "Desbloqueie no andar 30",
     "candy": "Desbloqueie no andar 50",
-    "retro": "Desbloqueie no andar 100"
+    "retro": "Desbloqueie no andar 100",
+    "sakura": "Desbloquear no andar 75"
   },
   "combo": {
     "3perfect": "🔥 3 perfeitos seguidos!",

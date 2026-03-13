@@ -63,7 +63,8 @@
     "neon": "Neon",
     "space": "Luar Angkasa",
     "candy": "Permen",
-    "retro": "Retro"
+    "retro": "Retro",
+    "sakura": "Sakura"
   },
   "titles": {
     "1": "Pemula Menumpuk",
@@ -111,7 +112,8 @@
     "neon": "Buka di lantai 10",
     "space": "Buka di lantai 30",
     "candy": "Buka di lantai 50",
-    "retro": "Buka di lantai 100"
+    "retro": "Buka di lantai 100",
+    "sakura": "Buka di lantai 75"
   },
   "combo": {
     "3perfect": "🔥 3 sempurna berturut-turut!",

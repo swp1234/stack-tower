@@ -99,6 +99,21 @@ const THEMES_DATA = [
     unlockFloor: 100,
     description: 'Unlock at floor 100',
     descKey: 'themeDesc.retro'
+  },
+  {
+    id: 'sakura',
+    name: 'Sakura',
+    nameKey: 'themes.sakura',
+    emoji: '🌸',
+    colors: ['#ffb7c5','#ff69b4','#db7093','#c71585','#ff1493'],
+    background: '#1a0a14',
+    backgroundGradient: ['#1a0a14','#2d1020'],
+    textColor: '#ffb7c5',
+    glowEffect: true,
+    unlockCondition: 'floor',
+    unlockFloor: 75,
+    description: 'Unlock at floor 75',
+    descKey: 'themeDesc.sakura'
   }
 ];
 

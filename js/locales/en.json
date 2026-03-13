@@ -63,7 +63,8 @@
     "neon": "Neon",
     "space": "Space",
     "candy": "Candy",
-    "retro": "Retro"
+    "retro": "Retro",
+    "sakura": "Sakura"
   },
   "titles": {
     "1": "Stacking Beginner",
@@ -111,7 +112,8 @@
     "neon": "Unlock at floor 10",
     "space": "Unlock at floor 30",
     "candy": "Unlock at floor 50",
-    "retro": "Unlock at floor 100"
+    "retro": "Unlock at floor 100",
+    "sakura": "Unlock at floor 75"
   },
   "combo": {
     "3perfect": "🔥 3 Perfect Combo!",

@@ -63,7 +63,8 @@
     "neon": "Néon",
     "space": "Espace",
     "candy": "Bonbon",
-    "retro": "Rétro"
+    "retro": "Rétro",
+    "sakura": "Sakura"
   },
   "titles": {
     "1": "Débutant",
@@ -111,7 +112,8 @@
     "neon": "Debloquer a l'etage 10",
     "space": "Debloquer a l'etage 30",
     "candy": "Debloquer a l'etage 50",
-    "retro": "Debloquer a l'etage 100"
+    "retro": "Debloquer a l'etage 100",
+    "sakura": "Débloquer à l'étage 75"
   },
   "combo": {
     "3perfect": "🔥 3 parfaits consecutifs !",

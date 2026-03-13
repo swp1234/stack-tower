@@ -63,7 +63,8 @@
     "neon": "Neon",
     "space": "Uzay",
     "candy": "Şeker",
-    "retro": "Retro"
+    "retro": "Retro",
+    "sakura": "Sakura"
   },
   "titles": {
     "1": "Yığma Çaylağı",
@@ -111,7 +112,8 @@
     "neon": "10. katta acilir",
     "space": "30. katta acilir",
     "candy": "50. katta acilir",
-    "retro": "100. katta acilir"
+    "retro": "100. katta acilir",
+    "sakura": "75. katta aç"
   },
   "combo": {
     "3perfect": "🔥 3 ust uste mukemmel!",
